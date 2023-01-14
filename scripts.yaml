@@ -1,0 +1,1135 @@
+downstairs_on:
+  alias: Hus ner T1
+  sequence:
+  - service: light.turn_on
+    entity_id: light.arbetsrum
+  - delay:
+      milliseconds: 250
+  - service: light.turn_on
+    entity_id: light.matplats
+  - delay:
+      milliseconds: 250
+  - service: light.turn_on
+    entity_id: light.koksbank
+  - delay:
+      milliseconds: 250
+  - service: light.turn_on
+    entity_id: light.vardagsrum
+  - delay:
+      milliseconds: 250
+  - service: script.sofa_medium
+    data: {}
+  mode: single
+  icon: mdi:toggle-switch
+downstairs_off:
+  alias: Hus ner T0
+  sequence:
+  - service: light.turn_off
+    entity_id: light.shelly_1l_s_arbetsrum_switch
+  - delay:
+      milliseconds: 250
+  - service: light.turn_off
+    entity_id: light.arbetsrum
+  - delay:
+      milliseconds: 250
+  - service: light.turn_off
+    entity_id: light.matplats
+  - delay:
+      milliseconds: 250
+  - service: light.turn_off
+    entity_id: light.tavla
+  - delay:
+      milliseconds: 250
+  - service: light.turn_off
+    entity_id: light.vardagsrum
+  - delay:
+      milliseconds: 250
+  - service: light.turn_off
+    entity_id: light.kokstak
+  - delay:
+      milliseconds: 250
+  - service: light.turn_off
+    entity_id: light.traningsskap
+  - delay:
+      milliseconds: 250
+  - service: light.turn_off
+    entity_id: light.koksfonster
+  mode: single
+  icon: mdi:toggle-switch-off
+upstairs_on_evening:
+  alias: Hus upp T1 Kväll
+  sequence:
+  - service: light.turn_on
+    entity_id: light.skrivbord
+  - delay:
+      milliseconds: 250
+  - service: light.turn_on
+    entity_id: light.spelhorna
+  - delay:
+      milliseconds: 250
+  - service: light.turn_on
+    entity_id: light.trappa
+  - delay:
+      milliseconds: 250
+  - service: light.turn_on
+    entity_id: light.sovrum
+  - delay:
+      milliseconds: 250
+  - service: light.turn_on
+    entity_id: light.trappa
+  mode: single
+  icon: mdi:toggle-switch
+upstairs_on_morning:
+  alias: Hus upp T1 Morgon
+  sequence:
+  - service: light.turn_on
+    entity_id: light.skrivbord
+  - delay:
+      milliseconds: 250
+  - service: light.turn_on
+    entity_id: light.spelhorna
+  - delay:
+      milliseconds: 250
+  - service: light.turn_on
+    entity_id: light.trappa
+  mode: single
+  icon: mdi:toggle-switch
+upstairs_off_evening:
+  alias: Hus upp T0 Kväll
+  sequence:
+  - service: light.turn_off
+    entity_id: light.allrum
+  - delay:
+      milliseconds: 250
+  - service: light.turn_off
+    entity_id: light.trappa
+  - delay:
+      milliseconds: 250
+  - service: light.turn_off
+    entity_id: light.spelhorna
+  - delay:
+      milliseconds: 250
+  - service: light.turn_off
+    entity_id: light.badrum
+  mode: single
+  icon: mdi:toggle-switch-off
+upstairs_off_morning:
+  alias: Hus upp T0 Morgon
+  sequence:
+  - service: light.turn_off
+    entity_id: light.allrum
+  - delay:
+      milliseconds: 250
+  - service: light.turn_off
+    entity_id: light.trappa
+  - delay:
+      milliseconds: 250
+  - service: light.turn_off
+    entity_id: light.spelhorna
+  - delay:
+      milliseconds: 250
+  - service: light.turn_off
+    entity_id: light.sovrum
+  - delay:
+      milliseconds: 250
+  - service: light.turn_off
+    entity_id: light.badrum
+  mode: single
+  icon: mdi:toggle-switch-off
+garden_off:
+  alias: Trädgård T0
+  sequence:
+  - service: script.backyard_off
+    data: {}
+  - delay:
+      milliseconds: 150
+  - service: script.frontyard_off
+    data: {}
+  mode: single
+  icon: mdi:toggle-switch-off
+garden_on:
+  alias: Trädgård T1
+  sequence:
+  - service: script.backyard_on
+    data: {}
+  - delay:
+      milliseconds: 150
+  - service: script.frontyard_on
+    data: {}
+  mode: single
+  icon: mdi:toggle-switch
+backyard_on:
+  alias: Trädgård bak T1
+  sequence:
+  - service: light.turn_on
+    entity_id: light.forradsdorr
+  - delay:
+      milliseconds: 150
+  - service: light.turn_on
+    entity_id: light.garage
+  - delay:
+      milliseconds: 150
+  - service: light.turn_on
+    entity_id: light.groventre
+  - delay:
+      milliseconds: 150
+  - service: light.turn_on
+    entity_id: light.pollare
+  - delay:
+      milliseconds: 150
+  - service: light.turn_on
+    entity_id: light.koksentre
+  mode: single
+  icon: mdi:toggle-switch
+backyard_off:
+  alias: Trädgård bak T0
+  sequence:
+  - service: light.turn_off
+    entity_id: light.forrad
+  - delay:
+      milliseconds: 150
+  - service: light.turn_off
+    entity_id: light.garage
+  - delay:
+      milliseconds: 150
+  - service: light.turn_off
+    entity_id: light.groventre
+  - delay:
+      milliseconds: 150
+  - service: light.turn_off
+    entity_id: light.pollare
+  - delay:
+      milliseconds: 150
+  - service: light.turn_off
+    entity_id: light.koksentre
+  mode: single
+  icon: mdi:toggle-switch-off
+frontyard_off:
+  alias: Trädgård fram T0
+  sequence:
+  - service: light.turn_off
+    entity_id: light.balkongdorr
+  - delay:
+      milliseconds: 150
+  - service: light.turn_off
+    entity_id: light.altandorr
+  - delay:
+      milliseconds: 150
+  - service: light.turn_off
+    entity_id: light.huvudentre
+  mode: single
+  icon: mdi:toggle-switch-off
+frontyard_on:
+  alias: Trädgård fram T1
+  sequence:
+  - service: light.turn_on
+    entity_id: light.huvudentre
+  - delay:
+      milliseconds: 150
+  - service: light.turn_on
+    entity_id: light.altandorr
+  - delay:
+      milliseconds: 150
+  - service: light.turn_on
+    entity_id: light.balkongdorr
+  mode: single
+  icon: mdi:toggle-switch
+garden_cozy:
+  alias: Trädgård L1
+  sequence:
+  - service: light.turn_on
+    target:
+      entity_id: light.pool
+  - delay:
+      milliseconds: 400
+  - service: light.turn_on
+    data:
+      hs_color:
+      - 90.164
+      - 71.765
+    target:
+      entity_id: light.forradsdorr
+  - delay:
+      milliseconds: 400
+  - service: light.turn_on
+    data:
+      hs_color:
+      - 331.343
+      - 52.549
+    target:
+      entity_id: light.garagedorr
+  - delay:
+      milliseconds: 400
+  - service: light.turn_on
+    data:
+      hs_color:
+      - 27.797
+      - 69.412
+    target:
+      entity_id: light.pollare
+  - delay:
+      milliseconds: 600
+  - service: light.turn_on
+    data:
+      entity_id: light.baksidan
+      brightness: 120
+  mode: single
+  icon: mdi:tune-vertical-variant
+garden_low:
+  alias: Trädgård L2
+  sequence:
+  - service: light.turn_on
+    data:
+      entity_id: light.baksidan
+      brightness: 120
+  - delay:
+      milliseconds: 400
+  - service: light.turn_on
+    data:
+      color_temp: 369
+    target:
+      entity_id: light.forradsdorr
+  - delay:
+      milliseconds: 400
+  - service: light.turn_on
+    data:
+      color_temp: 369
+    target:
+      entity_id: light.garagedorr
+  - delay:
+      milliseconds: 200
+  - service: light.turn_on
+    data:
+      color_temp: 369
+    target:
+      entity_id: light.pollare
+  - delay:
+      milliseconds: 600
+  - service: light.turn_off
+    target:
+      entity_id: light.pool
+    data: {}
+  mode: single
+  icon: mdi:tune-vertical-variant
+garden_bright:
+  alias: Trädgård L3
+  sequence:
+  - service: light.turn_on
+    data:
+      entity_id: light.baksidan
+      brightness: 255
+  - delay:
+      milliseconds: 400
+  - service: light.turn_on
+    data:
+      color_temp: 246
+    target:
+      entity_id: light.forradsdorr
+  - delay:
+      milliseconds: 400
+  - service: light.turn_on
+    data:
+      color_temp: 246
+    target:
+      entity_id: light.garagedorr
+  - delay:
+      milliseconds: 200
+  - service: light.turn_on
+    data:
+      color_temp: 246
+    target:
+      entity_id: light.pollare
+  - delay:
+      milliseconds: 600
+  - service: light.turn_off
+    target:
+      entity_id: light.pool
+    data: {}
+  mode: single
+  icon: mdi:tune-vertical-variant
+sofa_bright:
+  alias: Soffa L3
+  sequence:
+  - service: light.turn_on
+    data:
+      entity_id: light.soffa
+      brightness: 255
+  mode: single
+  icon: mdi:tune-vertical-variant
+sofa_medium:
+  alias: Soffa L2
+  sequence:
+  - service: light.turn_on
+    data:
+      entity_id: light.soffa
+      brightness: 120
+  mode: single
+  icon: mdi:tune-vertical-variant
+sofa_low:
+  alias: Soffa L1
+  sequence:
+  - data:
+      brightness_pct: 25
+    service: light.turn_on
+    target:
+      entity_id: light.soffa
+  mode: single
+  icon: mdi:tune-vertical-variant
+cupboard_bright:
+  alias: Skåp L3
+  sequence:
+  - service: light.turn_on
+    data:
+      entity_id: light.glasskap
+      color_temp: 250
+  - delay:
+      milliseconds: 400
+  - service: light.turn_on
+    data:
+      entity_id: light.glasskap
+      brightness: 255
+  mode: single
+  icon: mdi:tune-vertical-variant
+cupboard_medium:
+  alias: Skåp L2
+  sequence:
+  - service: light.turn_on
+    data:
+      entity_id: light.glasskap
+      color_temp: 346
+  - delay:
+      milliseconds: 400
+  - service: light.turn_on
+    data:
+      entity_id: light.glasskap
+      brightness: 120
+  mode: single
+  icon: mdi:tune-vertical-variant
+cupboard_low:
+  alias: Skåp L1
+  sequence:
+  - service: light.turn_on
+    data:
+      entity_id: light.glasskap
+      color_temp: 447
+  - delay:
+      milliseconds: 500
+  - service: light.turn_on
+    data:
+      entity_id: light.glasskap
+      brightness: 48
+  mode: single
+  icon: mdi:tune-vertical-variant
+countertop_bright:
+  alias: Köksbänk L3
+  sequence:
+  - service: light.turn_on
+    data:
+      brightness_pct: 100
+      color_temp: 350
+      transition: 2
+    target:
+      entity_id: light.koksbank
+  mode: single
+  icon: mdi:tune-vertical-variant
+countertop_medium:
+  alias: Köksbänk L2
+  sequence:
+  - service: light.turn_on
+    data:
+      color_temp: 400
+      transition: 2
+      brightness_pct: 73
+    target:
+      entity_id: light.koksbank
+  mode: single
+  icon: mdi:tune-vertical-variant
+countertop_low:
+  alias: Köksbänk L1
+  sequence:
+  - service: light.turn_on
+    data:
+      brightness_pct: 10
+      color_temp: 450
+      transition: 2
+    target:
+      entity_id: light.koksbank
+  mode: single
+  icon: mdi:tune-vertical-variant
+kitchen_ceiling_bright:
+  alias: Kökstak L3
+  sequence:
+  - service: light.turn_on
+    data:
+      entity_id: light.kokstak
+      color_temp: 350
+  - delay:
+      milliseconds: 500
+  - service: light.turn_on
+    data:
+      entity_id: light.kokstak
+      brightness_pct: 100
+  mode: single
+  icon: mdi:tune-vertical-variant
+kitchen_ceiling_medium:
+  alias: Kökstak L2
+  sequence:
+  - service: light.turn_on
+    data:
+      entity_id: light.kokstak
+      color_temp: 400
+  - delay:
+      milliseconds: 500
+  - service: light.turn_on
+    data:
+      entity_id: light.kokstak
+      brightness_pct: 65
+  mode: single
+  icon: mdi:tune-vertical-variant
+kitchen_ceiling_low:
+  alias: Kökstak L1
+  sequence:
+  - service: light.turn_on
+    data:
+      entity_id: light.kokstak
+      color_temp: 450
+  - delay:
+      milliseconds: 500
+  - service: light.turn_on
+    data:
+      entity_id: light.kokstak
+      brightness_pct: 30
+  mode: single
+  icon: mdi:tune-vertical-variant
+dining_bright:
+  alias: Matplats L3
+  sequence:
+  - service: light.turn_on
+    data:
+      entity_id: light.matplats
+      brightness: 255
+  mode: single
+  icon: mdi:tune-vertical-variant
+dining_medium:
+  alias: Matplats L2
+  sequence:
+  - service: light.turn_on
+    data:
+      entity_id: light.matplats
+      brightness: 127
+  mode: single
+  icon: mdi:tune-vertical-variant
+dining_low:
+  alias: Matplats L1
+  sequence:
+  - service: light.turn_on
+    data:
+      entity_id: light.matplats
+      brightness: 63
+  mode: single
+  icon: mdi:tune-vertical-variant
+office_bright:
+  alias: Arbetsrum L3
+  sequence:
+  - service: light.turn_on
+    data:
+      color_temp: 250
+    target:
+      entity_id:
+      - light.arbetsrum_bord
+      - light.arbetsrum_glob
+      - light.arbetsrum_golv
+      - light.arbetsrum_fonster
+      - light.shelly_1l_r_arbetsrum_tak
+  - delay:
+      hours: 0
+      minutes: 0
+      seconds: 1
+      milliseconds: 0
+  - service: light.turn_on
+    data:
+      brightness: 255
+    target:
+      entity_id:
+      - light.arbetsrum_bord
+      - light.arbetsrum_glob
+      - light.arbetsrum_fonster
+      - light.arbetsrum_golv
+  mode: single
+  icon: mdi:tune-vertical-variant
+office_medium:
+  alias: Arbetsrum L2
+  sequence:
+  - service: light.turn_off
+    data: {}
+    target:
+      entity_id: light.shelly_1l_r_arbetsrum_tak
+  - service: light.turn_on
+    data:
+      entity_id: light.arbetsrum
+      brightness: 135
+  - delay:
+      hours: 0
+      minutes: 0
+      seconds: 1
+      milliseconds: 0
+  - service: light.turn_on
+    data:
+      entity_id: light.arbetsrum_glob
+      color_temp: 346
+  mode: single
+  icon: mdi:tune-vertical-variant
+office_low:
+  alias: Arbetsrum L1
+  sequence:
+  - service: light.turn_off
+    data: {}
+    target:
+      entity_id:
+      - light.shelly_1l_r_arbetsrum_tak
+      - light.arbetsrum_golv
+      - light.arbetsrum_bord
+  - service: light.turn_on
+    data:
+      entity_id: light.arbetsrum_glob
+      color_temp: 447
+  - delay:
+      hours: 0
+      minutes: 0
+      seconds: 1
+      milliseconds: 0
+  - service: light.turn_on
+    data:
+      brightness: 63
+    target:
+      entity_id:
+      - light.arbetsrum_glob
+      - light.arbetsrum_fonster
+  mode: single
+  icon: mdi:tune-vertical-variant
+staircase_bright:
+  alias: Trappa L3
+  sequence:
+  - service: light.turn_on
+    data:
+      entity_id: light.trappa
+      brightness: 255
+  mode: single
+  icon: mdi:tune-vertical-variant
+staircase_medium:
+  alias: Trappa L2
+  sequence:
+  - service: light.turn_on
+    data:
+      entity_id: light.trappa
+      brightness: 112
+  mode: single
+  icon: mdi:tune-vertical-variant
+staircase_low:
+  alias: Trappa L1
+  sequence:
+  - service: light.turn_on
+    data:
+      entity_id: light.trappa
+      brightness: 47
+  mode: single
+  icon: mdi:tune-vertical-variant
+bath_bright:
+  alias: Badrum L3
+  sequence:
+  - service: light.turn_on
+    data:
+      entity_id: light.badrum
+      color_temp: 250
+  - delay:
+      milliseconds: 500
+  - service: light.turn_on
+    data:
+      entity_id: light.badrum
+      brightness: 255
+  mode: single
+  icon: mdi:tune-vertical-variant
+bath_medium:
+  alias: Badrum L2
+  sequence:
+  - service: light.turn_on
+    data:
+      entity_id: light.badrum
+      color_temp: 346
+  - delay:
+      milliseconds: 500
+  - service: light.turn_on
+    data:
+      entity_id: light.badrum
+      brightness: 127
+  mode: single
+  icon: mdi:tune-vertical-variant
+bath_low:
+  alias: Badrum L1
+  sequence:
+  - service: light.turn_on
+    data:
+      entity_id: light.badrum
+      color_temp: 447
+  - delay:
+      milliseconds: 500
+  - service: light.turn_on
+    data:
+      entity_id: light.badrum
+      brightness: 63
+  mode: single
+  icon: mdi:tune-vertical-variant
+study_bright:
+  alias: Skrivbord L3
+  sequence:
+  - service: light.turn_on
+    data:
+      entity_id: light.skrivbord
+      brightness: 255
+  mode: single
+  icon: mdi:tune-vertical-variant
+study_medium:
+  alias: Skrivbord L2
+  sequence:
+  - service: light.turn_on
+    data:
+      entity_id: light.skrivbord
+      brightness: 127
+  mode: single
+  icon: mdi:tune-vertical-variant
+study_low:
+  alias: Skrivbord L1
+  sequence:
+  - service: light.turn_on
+    data:
+      entity_id: light.skrivbord
+      brightness: 48
+  mode: single
+  icon: mdi:tune-vertical-variant
+gamecorner_high:
+  alias: Spelhörna L3
+  sequence:
+  - service: light.turn_on
+    data:
+      entity_id: light.spelhorna
+      rgb_color:
+      - 255
+      - 230
+      - 138
+  - delay:
+      milliseconds: 500
+  - service: light.turn_on
+    data:
+      entity_id: light.spelhorna
+      brightness: 254
+  mode: single
+  icon: mdi:tune-vertical-variant
+gamecorner_low:
+  alias: Spelhörna L1
+  sequence:
+  - service: light.turn_on
+    data:
+      entity_id: light.spelhorna
+      rgb_color:
+      - 255
+      - 179
+      - 76
+  - delay:
+      milliseconds: 500
+  - service: light.turn_on
+    data:
+      entity_id: light.spelhorna
+      brightness: 103
+  mode: single
+  icon: mdi:tune-vertical-variant
+gamecorner_night:
+  alias: Spelhörna L0 Nattljus
+  sequence:
+  - service: light.turn_on
+    data:
+      entity_id: light.spelhorna
+      rgb_color:
+      - 255
+      - 179
+      - 76
+  - delay:
+      milliseconds: 500
+  - service: light.turn_on
+    data:
+      entity_id: light.spelhorna
+      brightness: 15
+  mode: single
+  icon: mdi:tune-vertical-variant
+bed_bright:
+  alias: Sovrum L3
+  sequence:
+  - service: light.turn_on
+    data:
+      entity_id: light.sovrum
+      color_temp: 250
+  - delay:
+      milliseconds: 500
+  - service: light.turn_on
+    data:
+      entity_id: light.sovrum
+      brightness: 255
+  mode: single
+  icon: mdi:tune-vertical-variant
+bed_medium:
+  alias: Sovrum L2
+  sequence:
+  - service: light.turn_on
+    data:
+      entity_id: light.sovrum
+      color_temp: 346
+  - delay:
+      milliseconds: 500
+  - service: light.turn_on
+    data:
+      entity_id: light.sovrum
+      brightness: 120
+  mode: single
+  icon: mdi:tune-vertical-variant
+bed_low:
+  alias: Sovrum L1
+  sequence:
+  - service: light.turn_on
+    data:
+      entity_id: light.sovrum
+      color_temp: 447
+  - delay:
+      milliseconds: 500
+  - service: light.turn_on
+    data:
+      entity_id: light.sovrum
+      brightness: 48
+  mode: single
+  icon: mdi:tune-vertical-variant
+bed_wakeup:
+  alias: Sovrum S3 Väckningsljus
+  sequence:
+  - service: light.turn_on
+    data:
+      brightness: 1
+      xy_color:
+      - 0.67
+      - 0.39
+    target:
+      entity_id: light.sovrum
+  - delay:
+      seconds: 1
+  - service: light.turn_on
+    data:
+      brightness: 85
+      xy_color:
+      - 0.65
+      - 0.41
+      transition: '{{ transition }}'
+    target:
+      entity_id: light.sovrum
+  - delay:
+      seconds: '{{ transition | int + 1}}'
+  - service: light.turn_on
+    data:
+      brightness: 170
+      xy_color:
+      - 0.6
+      - 0.4
+      transition: '{{ transition }}'
+    target:
+      entity_id: light.sovrum
+  - delay:
+      seconds: '{{ transition | int + 1}}'
+  - service: light.turn_on
+    data:
+      brightness: 255
+      xy_color:
+      - 0.48
+      - 0.4
+      transition: '{{ transition }}'
+    target:
+      entity_id: light.sovrum
+  - delay:
+      seconds: '{{ transition | int + 1 }}'
+  mode: single
+  icon: mdi:theater
+mika_ceiling_bright:
+  alias: Mika tak L3
+  sequence:
+  - service: light.turn_on
+    data:
+      entity_id: light.mika_tak
+      color_temp: 250
+  - delay:
+      milliseconds: 500
+  - service: light.turn_on
+    data:
+      entity_id: light.mika_tak
+      brightness: 255
+  mode: single
+  icon: mdi:tune-vertical-variant
+mika_ceiling_medium:
+  alias: Mika tak L2
+  sequence:
+  - service: light.turn_on
+    data:
+      entity_id: light.mika_tak
+      color_temp: 346
+  - delay:
+      milliseconds: 500
+  - service: light.turn_on
+    data:
+      entity_id: light.mika_tak
+      brightness: 127
+  mode: single
+  icon: mdi:tune-vertical-variant
+mika_ceiling_low:
+  alias: Mika tak L1
+  sequence:
+  - service: light.turn_on
+    data:
+      entity_id: light.mika_tak
+      color_temp: 447
+  - delay:
+      milliseconds: 500
+  - service: light.turn_on
+    data:
+      entity_id: light.mika_tak
+      brightness: 63
+  mode: single
+  icon: mdi:tune-vertical-variant
+isan_ceiling_bright:
+  alias: Isan tak L3
+  sequence:
+  - service: light.turn_on
+    data:
+      entity_id: light.isan_tak
+      color_temp: 250
+  - delay:
+      milliseconds: 500
+  - service: light.turn_on
+    data:
+      entity_id: light.isan_tak
+      brightness: 255
+  mode: single
+  icon: mdi:tune-vertical-variant
+isan_ceiling_medium:
+  alias: Isan tak L2
+  sequence:
+  - service: light.turn_on
+    data:
+      entity_id: light.isan_tak
+      color_temp: 346
+  - delay:
+      milliseconds: 500
+  - service: light.turn_on
+    data:
+      entity_id: light.isan_tak
+      brightness: 127
+  mode: single
+  icon: mdi:tune-vertical-variant
+isan_ceiling_low:
+  alias: Isan tak L1
+  sequence:
+  - service: light.turn_on
+    data:
+      entity_id: light.isan_tak
+      color_temp: 447
+  - delay:
+      milliseconds: 500
+  - service: light.turn_on
+    data:
+      entity_id: light.isan_tak
+      brightness: 63
+  mode: single
+  icon: mdi:tune-vertical-variant
+kitchen_dinner:
+  alias: Kök S1 Middag
+  sequence:
+  - service: light.turn_off
+    entity_id: light.kokstak
+  - service: script.dining_low
+    data: {}
+  - service: script.countertop_low
+    data: {}
+  mode: single
+  icon: mdi:theater
+kitchen_breakfast:
+  alias: Kök S3 Frukost
+  sequence:
+  - service: script.countertop_medium
+    data: {}
+  - service: script.dining_bright
+    data: {}
+  mode: single
+  icon: mdi:theater
+kitchen_cook:
+  alias: Kök S2 Laga mat
+  sequence:
+  - service: script.countertop_bright
+    data: {}
+  - service: script.dining_medium
+    data: {}
+  mode: single
+  icon: mdi:theater
+livingroom_game:
+  alias: Vardagsrum S3 Spela
+  sequence:
+  - service: script.sofa_bright
+    data: {}
+  - service: script.cupboard_bright
+    data: {}
+  mode: single
+  icon: mdi:theater
+livingroom_relax:
+  alias: Vardagsrum S2 Relaxa
+  sequence:
+  - service: script.sofa_medium
+    data: {}
+  - service: script.cupboard_medium
+    data: {}
+  mode: single
+  icon: mdi:theater
+livingroom_tv:
+  alias: Vardagsrum S1 TV
+  sequence:
+  - service: script.sofa_low
+    data: {}
+  - service: script.cupboard_low
+    data: {}
+  - service: light.turn_off
+    data:
+      entity_id: light.soffa_vanster
+  - service: light.turn_off
+    data:
+      entity_id: light.hall
+  mode: single
+  icon: mdi:theater
+house_emergency_light:
+  alias: Hus L4 Nödljus
+  sequence:
+  - service: light.turn_on
+    data:
+      entity_id: light.huset
+      color_temp: 250
+  - delay:
+      milliseconds: 400
+  - service: light.turn_on
+    data:
+      entity_id: light.huset
+      brightness: 255
+  mode: single
+  icon: mdi:tune-vertical-variant
+gameroom_create:
+  alias: Allrum S2 Umgås
+  sequence:
+  - service: script.study_bright
+    data: {}
+  - service: script.gamecorner_high
+    data: {}
+  - service: script.staircase_bright
+    data: {}
+  - service: script.bath_bright
+    data: {}
+  mode: single
+  icon: mdi:theater
+gameroom_game:
+  alias: Allrum S3 spela
+  sequence:
+  - service: script.study_medium
+    data: {}
+  - service: script.gamecorner_low
+    data: {}
+  - service: script.staircase_medium
+    data: {}
+  - service: light.turn_off
+    entity_id: light.badrum
+  mode: single
+  icon: mdi:theater
+gameroom_tv:
+  alias: Allrum S0 Se TV
+  sequence:
+  - service: script.study_low
+    data: {}
+  - service: script.gamecorner_low
+    data: {}
+  - service: script.staircase_low
+    data: {}
+  - service: light.turn_off
+    entity_id: light.badrum
+  mode: single
+  icon: mdi:theater
+mika_sleep:
+  alias: Mika S1 Sova
+  sequence:
+  - service: light.turn_off
+    entity_id: light.mika_tak
+  mode: single
+  icon: mdi:theater
+mika_create:
+  alias: Mika S3 Jobba
+  sequence:
+  - service: script.mika_ceiling_low
+    data: {}
+  mode: single
+  icon: mdi:theater
+mika_read:
+  alias: Mika S2 Läsa
+  sequence:
+  - service: script.mika_ceiling_medium
+    data: {}
+  mode: single
+  icon: mdi:theater
+stream_to_navet:
+  alias: 'Hey G: On display'
+  sequence:
+  - service: automation.trigger
+    data: {}
+    target:
+      entity_id: automation.stream_screen_to_navet
+  mode: single
+  icon: mdi:google-assistant
+hey_g_afternoon_music:
+  alias: 'Hey G: Afternoon music'
+  sequence:
+  - service: spotcast.start
+    data:
+      entity_id: media_player.musikgruppen
+      uri: spotify:playlist:1rbyoMwrVqytS56wXMz79V
+      random_song: true
+      shuffle: true
+  mode: single
+  icon: mdi:google-assistant
+hey_g_morning_music:
+  alias: 'Hey G: Morning music'
+  sequence:
+  - service: spotcast.start
+    data:
+      entity_id: media_player.musikgruppen
+      uri: spotify:playlist:4EZBolHyyIGbDKVw6eXz7p
+      random_song: true
+      shuffle: true
+  mode: single
+  icon: mdi:google-assistant
+hey_g_func_music:
+  alias: 'Hey G: Funk music'
+  sequence:
+  - service: spotcast.start
+    data:
+      entity_id: media_player.musikgruppen
+      uri: spotify:playlist:37i9dQZF1DX4WgZiuR77Ef
+      random_song: true
+      shuffle: true
+  mode: single
+  icon: mdi:google-assistant
+hey_g_chillout_music:
+  alias: 'Hey G: Chillout music'
+  sequence:
+  - service: spotcast.start
+    data:
+      entity_id: media_player.musikgruppen
+      uri: spotify:playlist:4blXb4Sk584x48NCTWR6ON
+      random_song: true
+      shuffle: true
+  mode: single
+  icon: mdi:google-assistant

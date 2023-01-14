@@ -1,0 +1,22 @@
+title: Casa Reis
+name: Casa Reis
+
+swipe_nav:
+  wrap: false
+  animate: swipe
+
+button_card_templates: !include button_card_templates.yaml
+
+views:
+  - !include overview/main.yaml
+  - !include overview/outdoor.yaml
+  - !include overview/kitchen.yaml
+  - !include overview/livingroom.yaml
+  - !include overview/office.yaml
+  - !include overview/gameroom.yaml
+  - !include overview/bedroom.yaml
+  - !include overview/mika.yaml
+  - !include overview/isan.yaml
+  - !include overview/climate.yaml
+  - !include overview/security.yaml
+  - !include overview/alarm.yaml

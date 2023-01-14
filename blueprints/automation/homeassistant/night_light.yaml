@@ -1,0 +1,88 @@
+blueprint:
+  name: Motion-activated night light
+  description: Turn on a light at night when motion is detected.
+  domain: automation
+  input:
+    motion_entity:
+      name: Motion Sensor
+      selector:
+        entity:
+          domain: binary_sensor
+          device_class: motion
+    light_target:
+      name: Light
+      selector:
+        target:
+          entity:
+            domain: light
+    light_brightness:
+      name: Brightness
+      description: Set brightness of night light 5-100%
+      default: 5
+      selector:
+        number:
+          min: 5
+          max: 100
+          unit_of_measurement: percent
+    no_motion_wait:
+      name: Wait time
+      description: Time to leave the light on after last motion is detected.
+      default: 320
+      selector:
+        number:
+          min: 0
+          max: 3600
+          unit_of_measurement: seconds
+    on_time:
+      name: Nightligh on
+      description: Time when nightlight is activated
+      default: '01:00:00'
+      selector:
+        time:
+    off_time:
+      name: Nightligh off
+      description: Time when nightlight is deactivated
+      default: '05:30:00'
+      selector:
+        time:
+
+# If motion is detected within the delay,
+# we restart the script.
+mode: restart
+max_exceeded: silent
+
+trigger:
+  platform: state
+  entity_id: !input motion_entity
+  from: "off"
+  to: "on"
+
+# Set the times when the nighlight are active
+condition:
+  condition: time
+  after: !input on_time
+  before: !input off_time
+
+# Turn on the lights and set it to low
+action:
+  - service: light.turn_on
+    target: !input light_target
+    data_template:
+      brightness: !input light_brightness
+  - wait_for_trigger:
+      platform: state
+      entity_id: !input motion_entity
+      from: "on"
+      to: "off"
+  - delay: !input no_motion_wait
+  - service: light.turn_off
+    target: !input light_target
+
+
+# {% if is_state("light.arbetsrum_golv", "off") -%}
+# Yes
+# {%- else %}
+# no
+# {%- endif %}
+
+# {{ strptime("09:09:00", '%H:%M:%S').strftime("%H:%M") ==  now().strftime("%H:%M") }}

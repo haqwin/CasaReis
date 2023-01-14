@@ -1,0 +1,661 @@
+id: le01
+title: Huset
+icon: 'mdi:home'
+path: main
+background: '#25251C'
+background: center / cover no-repeat url("https://5bwygfqmz4lel2z0muly8xjgbxhvkbkz.ui.nabu.casa/local/green2.png") fixed
+badges: []
+cards:
+
+# ----------------------------------------
+# Top info
+# ----------------------------------------
+
+  - type: custom:mod-card
+    style: |
+      ha-card {
+        padding: 8px 12px 38px 12px;
+      }
+    card:
+
+      type: vertical-stack
+      cards:
+
+        - type: vertical-stack
+          cards:
+
+            - type: horizontal-stack
+              cards:
+
+              - type: custom:button-card
+                template: user
+                entity: sensor.hakan_status
+
+              - type: custom:button-card
+                template: user
+                entity: sensor.annika_status
+
+              - type: custom:button-card
+                template: empty
+
+              - type: custom:button-card
+                template: empty
+
+              # - type: custom:button-card
+              #   template: user
+              #   entity: sensor.mika_status
+
+              # - type: custom:button-card
+              #   template: user
+              #   entity: sensor.isan_status
+
+              - type: custom:button-card
+                template: sensor
+                entity: sensor.haqwin_next_alarme
+                name: Väcka
+                icon: mdi:alarm
+                label: >
+                  [[[ 
+                    return states['sensor.haqwin_next_alarm_short'].state; 
+                  ]]]
+                tap_action: 
+                  action: navigate
+                  navigation_path: /lovelace/alarm 
+
+              - type: custom:button-card
+                template: sensor
+                entity: sensor.vardagsrum_temperature
+                name: Inne
+                label: >
+                  [[[ 
+                    return parseInt(states['sensor.vardagsrum_temperature'].state) + '°C'; 
+                  ]]]
+                icon: mdi:thermometer
+
+
+            - type: custom:mod-card
+              style: |
+                ha-card {
+                  border-radius: 5px;
+                  background: black;
+                  margin:  10px -16px -30px -16px;
+                  padding:  0px  16px  30px  16px;
+                }
+              card:
+
+                type: vertical-stack
+                cards:
+
+    # ----------------------------------------
+    # Utomhus
+    # ----------------------------------------
+
+                      - type: custom:button-card
+                        template: title_navigate
+                        name: Utomhus
+                        icon: 'mdi:chevron-double-right'
+                        styles:
+                          card:
+                            - padding-top: 32px
+                            - padding-bottom: 8px
+                        tap_action: 
+                          action: navigate
+                          navigation_path: /lovelace/outdoor 
+
+                      - type: horizontal-stack
+                        cards:
+
+                        - type: custom:button-card
+                          template: toggle
+                          entity: light.baksidan
+                          name: Baksidan
+                          icon: mdi:tree
+                          hold_action:
+                            action: navigate
+                            navigation_path: /lovelace/outdoor
+
+                        - type: custom:button-card
+                          template: toggle
+                          entity: light.framsidan
+                          name: Framsidan
+                          icon: mdi:tree
+                          hold_action:
+                            action: navigate
+                            navigation_path: /lovelace/outdoor
+
+                        - type: custom:button-card
+                          template: scene
+                          name: Relaxa
+                          label: Dämpat
+                          icon: mdi:glass-wine
+                          entity: script.garden_cozy
+
+                        - type: custom:button-card
+                          template: scene
+                          name: Stilla
+                          label: Svagt
+                          icon: mdi:weather-sunset
+                          entity: script.garden_low
+
+                        - type: custom:button-card
+                          template: scene
+                          name: Aktivitet
+                          label: Ljust
+                          icon: mdi:weather-sunny
+                          entity: script.garden_bright
+
+    # ----------------------------------------
+    # Matplats & Kök
+    # ----------------------------------------
+
+            - type: custom:mod-card
+              style: |
+                ha-card {
+                  border-radius: 5px;
+                  background: #00000070;
+                  margin:  32px -16px -30px -16px;
+                  padding:  0px  16px  30px  16px;
+                }
+              card:
+
+                type: vertical-stack
+                cards:
+
+                - type: custom:button-card
+                  template: title_navigate
+                  name: Matplats & Kök
+                  icon: 'mdi:chevron-double-right'
+                  styles:
+                    card:
+                      - padding-top: 16px
+                      - padding-bottom: 8px
+                  tap_action: 
+                    action: navigate
+                    navigation_path: /lovelace/kitchen 
+
+                - type: horizontal-stack
+                  cards:
+
+                  - type: custom:button-card
+                    template: toggle
+                    entity: light.matplats
+                    name: Matplats
+                    icon: mdi:noodles
+                    hold_action:
+                      action: navigate
+                      navigation_path: /lovelace/kitchen
+
+                  - type: custom:button-card
+                    template: toggle
+                    entity: light.koksbank
+                    name: Köksbänk
+                    icon: mdi:led-strip-variant
+                    hold_action:
+                      action: navigate
+                      navigation_path: /lovelace/kitchen
+
+                  - type: custom:button-card
+                    template: scene
+                    name: Middag
+                    label: Dämpat
+                    icon: mdi:candle
+                    entity: script.kitchen_dinner
+
+                  - type: custom:button-card
+                    template: scene
+                    name: Frukost
+                    label: Ljust
+                    icon: mdi:coffee
+                    entity: script.kitchen_breakfast
+
+                  - type: custom:button-card
+                    template: scene
+                    name: Laga mat
+                    label: Ljust
+                    icon: mdi:chef-hat
+                    entity: script.kitchen_cook
+
+    # ----------------------------------------
+    # Vardagsrummet
+    # ----------------------------------------
+
+                - type: custom:button-card
+                  template: title_navigate
+                  name: Vardagsrummet
+                  icon: 'mdi:chevron-double-right'
+                  styles:
+                    card:
+                      - padding-top: 16px
+                      - padding-bottom: 8px
+                  tap_action: 
+                    action: navigate
+                    navigation_path: /lovelace/livingroom 
+
+                - type: horizontal-stack
+                  cards:
+
+                  - type: custom:button-card
+                    template: toggle
+                    entity: light.vardagsrum
+                    name: Salongen
+                    icon: mdi:sofa
+                    hold_action:
+                      action: navigate
+                      navigation_path: /lovelace/livingroom   
+
+                  - type: custom:button-card
+                    template: toggle
+                    entity: light.hall
+                    name: Hallen
+                    icon: mdi:dumbbell
+                    hold_action:
+                      action: navigate
+                      navigation_path: /lovelace/livingroom   
+
+                  - type: custom:button-card
+                    template: scene
+                    name: Se TV
+                    label: Svagt
+                    icon: mdi:television-classic
+                    entity: script.livingroom_tv
+
+                  - type: custom:button-card
+                    template: scene
+                    name: Umgås
+                    label: Dämpat
+                    icon: mdi:glass-wine
+                    entity: script.livingroom_relax
+
+                  - type: custom:button-card
+                    template: scene
+                    name: Spela
+                    label: Ljust
+                    icon: mdi:gamepad-variant
+                    entity: script.livingroom_game
+
+    # ----------------------------------------
+    # Arbetsrummet
+    # ----------------------------------------
+
+                - type: custom:button-card
+                  template: title_navigate
+                  name: Arbetsrummet
+                  icon: 'mdi:chevron-double-right'
+                  styles:
+                    card:
+                      - padding-top: 16px
+                      - padding-bottom: 8px
+                  tap_action: 
+                    action: navigate
+                    navigation_path: /lovelace/office
+
+                - type: horizontal-stack
+                  cards:
+
+                  - type: custom:button-card
+                    template: toggle
+                    entity: light.arbetsrum
+                    name: Kontoret
+                    icon: mdi:desk-lamp
+                    hold_action:
+                      action: navigate
+                      navigation_path: /lovelace/office
+
+                  - type: custom:button-card
+                    template: toggle
+                    entity: light.shelly_1l_r_arbetsrum_tak
+                    name: Taket
+                    icon: mdi:ceiling-light
+                    hold_action:
+                      action: more-info  
+
+                  - type: custom:button-card
+                    template: scene
+                    name: Ambient
+                    label: Dämpat
+                    icon: mdi:power-sleep
+                    entity: script.office_low
+
+                  - type: custom:button-card
+                    template: scene
+                    name: Läsa
+                    label: Medium
+                    icon: mdi:book-open-page-variant
+                    entity: script.office_medium
+                      
+                  - type: custom:button-card
+                    template: scene
+                    name: Jobba
+                    label: Ljust
+                    icon: mdi:laptop
+                    entity: script.office_bright
+
+
+    # ----------------------------------------
+    # Allrummet
+    # ----------------------------------------
+
+            - type: custom:mod-card
+              style: |
+                ha-card {
+                  border-radius: 5px;
+                  background: #00000070;
+                  margin:  32px -16px -30px -16px;
+                  padding:  0px  16px  30px  16px;
+                }
+              card:
+
+                type: vertical-stack
+                cards:
+
+                - type: custom:button-card
+                  template: title_navigate
+                  name: Allrummet
+                  icon: 'mdi:chevron-double-right'
+                  styles:
+                    card:
+                      - padding-top: 16px
+                      - padding-bottom: 8px
+                  tap_action: 
+                    action: navigate
+                    navigation_path: /lovelace/familyroom
+
+                - type: horizontal-stack
+                  cards:
+
+                  - type: custom:button-card
+                    template: toggle
+                    entity: light.allrum
+                    name: Spelrum
+                    icon: mdi:gamepad-variant
+                    hold_action:
+                      action: navigate
+                      navigation_path: /lovelace/familyroom
+
+                  - type: custom:button-card
+                    template: toggle
+                    entity: light.trappa
+                    name: Trappa
+                    icon: mdi:stairs
+                    hold_action:
+                      action: navigate
+                      navigation_path: /lovelace/familyroom
+
+                  - type: custom:button-card
+                    template: scene
+                    name: Se TV
+                    label: Dämpat
+                    icon: mdi:television-classic
+                    entity: script.gameroom_tv
+
+                  - type: custom:button-card
+                    template: scene
+                    name: Spela
+                    label: Medium
+                    icon: mdi:checkerboard
+                    entity: script.gameroom_game
+                      
+                  - type: custom:button-card
+                    template: scene
+                    name: Läsa
+                    label: Ljust
+                    icon: mdi:book-open-page-variant
+                    entity: script.gameroom_create                                            
+
+
+    # ----------------------------------------
+    # Sovrummet
+    # ----------------------------------------
+
+                - type: custom:button-card
+                  template: title_navigate
+                  name: Håkan & Annika
+                  icon: 'mdi:chevron-double-right'
+                  styles:
+                    card:
+                      - padding-top: 16px
+                      - padding-bottom: 8px
+                  tap_action: 
+                    action: navigate
+                    navigation_path: /lovelace/bedroom
+
+                - type: horizontal-stack
+                  cards:
+
+                  - type: custom:button-card
+                    template: toggle
+                    entity: light.sovrum
+                    name: Sängen
+                    icon: mdi:power-sleep
+                    hold_action:
+                      action: navigate
+                      navigation_path: /lovelace/bedroom
+
+                  - type: custom:button-card
+                    template: scene
+                    name: Sova
+                    label: Svagt
+                    icon: mdi:chat-sleep
+                    entity: script.bed_low     
+
+                  - type: custom:button-card
+                    template: scene
+                    name: Se TV
+                    label: Medium
+                    icon: mdi:television-classic
+                    entity: script.bed_medium     
+
+                  - type: custom:button-card
+                    template: scene
+                    name: Läsa
+                    label: Ljust
+                    icon: mdi:book-open-page-variant
+                    entity: script.bed_bright                                                 
+
+                  - type: custom:button-card
+                    template: empty
+
+    # ----------------------------------------
+    # Mika
+    # ----------------------------------------
+
+                - type: custom:button-card
+                  template: title_navigate
+                  name: Mika
+                  icon: 'mdi:chevron-double-right'
+                  styles:
+                    card:
+                      - padding-top: 16px
+                      - padding-bottom: 8px
+                  tap_action: 
+                    action: navigate
+                    navigation_path: /lovelace/mika
+
+                - type: horizontal-stack
+                  cards:
+
+                  - type: custom:button-card
+                    template: toggle
+                    entity: light.mika_tak
+                    name: Taket
+                    icon: mdi:ceiling-light
+                    hold_action:
+                      action: navigate
+                      navigation_path: /lovelace/mika
+
+                  - type: custom:button-card
+                    template: scene
+                    name: Sova
+                    label: Svagt
+                    icon: mdi:chat-sleep
+                    entity: script.mika__ceiling_low   
+
+                  - type: custom:button-card
+                    template: scene
+                    name: Plugga
+                    label: Medium
+                    icon: mdi:laptop-windows
+                    entity: script.mika__ceiling_medium 
+
+                  - type: custom:button-card
+                    template: scene
+                    name: Läsa
+                    label: Ljust
+                    icon: mdi:book-open-page-variant
+                    entity: script.mika_ceiling_bright   
+
+                  - type: custom:button-card
+                    template: empty
+
+    # ----------------------------------------
+    # Isan
+    # ----------------------------------------
+
+                - type: custom:button-card
+                  template: title_navigate
+                  name: Isabella
+                  icon: 'mdi:chevron-double-right'
+                  styles:
+                    card:
+                      - padding-top: 16px
+                      - padding-bottom: 8px
+                  tap_action: 
+                    action: navigate
+                    navigation_path: /lovelace/isan
+
+                - type: horizontal-stack
+                  cards:
+
+                  - type: custom:button-card
+                    template: toggle
+                    entity: light.isan_tak
+                    name: Taket
+                    icon: mdi:ceiling-light
+                    hold_action:
+                      action: navigate
+                      navigation_path: /lovelace/isan
+
+                  - type: custom:button-card
+                    template: scene
+                    name: Sova
+                    label: Svagt
+                    icon: mdi:chat-sleep
+                    entity: script.isan_ceiling_low   
+
+                  - type: custom:button-card
+                    template: scene
+                    name: Plugga
+                    label: Medium
+                    icon: mdi:laptop-windows
+                    entity: script.isan_ceiling_medium 
+
+                  - type: custom:button-card
+                    template: scene
+                    name: Läsa
+                    label: Ljust
+                    icon: mdi:book-open-page-variant
+                    entity: script.isan_ceiling_bright   
+
+                  - type: custom:button-card
+                    template: empty
+
+            - type: custom:mod-card
+              style: |
+                ha-card {
+                  border-radius: 5px;
+                  margin:  24px -16px 0px -16px;
+                  padding:  16px 0px  16px  0px;
+                }
+              card:
+
+                type: vertical-stack
+                cards:
+                
+                - type: entities
+                  entities:
+                    - type: custom:mini-media-player
+                      entity: media_player.musikgruppen
+                      group: true
+                      icon: mdi:speaker-multiple
+                    - type: custom:mini-media-player
+                      entity: media_player.musik_studion
+                      artwork: none
+                      group: true
+                      hide:
+                        controls: true
+                        power: true
+                        info: true
+                        progress: true
+                        icon: true
+                    - type: custom:mini-media-player
+                      entity: media_player.musik_vardagsrummet
+                      group: true
+                      artwork: none
+                      hide:
+                        controls: true
+                        power: true
+                        info: true
+                        progress: true
+                        icon: true
+                    - type: custom:mini-media-player
+                      entity: media_player.navet
+                      group: true
+                      artwork: none
+                      hide:
+                        controls: true
+                        power: true
+                        info: true
+                        progress: true
+                        icon: true
+                    - type: custom:mini-media-player
+                      entity: media_player.musik_koket
+                      group: true
+                      artwork: none
+                      hide:
+                        controls: true
+                        power: true
+                        info: true
+                        progress: true
+                        icon: true
+                      shortcuts:
+                        columns: 4 # Max buttons per row
+                        buttons:
+                        - id: spotcast.start
+                          # name: Breakfast
+                          icon: mdi:weather-sunset
+                          type: service
+                          data:
+                            entity_id: media_player.musikgruppen
+                            uri: 'spotify:playlist:4EZBolHyyIGbDKVw6eXz7p'
+                            random_song: true
+                            shuffle: true
+                            
+                        - id: spotcast.start
+                          name: ´22
+                          # icon: mdi:bookmark-music-outline
+                          type: service
+                          data:
+                            entity_id: media_player.musikgruppen
+                            uri: 'spotify:playlist:1rbyoMwrVqytS56wXMz79V'
+                            random_song: true
+                            shuffle: true
+                            
+                        - id: spotcast.start
+                          # name: Workout
+                          icon: mdi:shoe-sneaker
+                          type: service
+                          data:
+                            entity_id: media_player.musikgruppen
+                            uri: 'spotify:playlist:4bM9ebE40x6hXDHLXMNMm7'
+                            random_song: true
+                            shuffle: true
+
+                        - id: spotcast.start
+                          # name: Weekly
+                          icon: mdi:calendar-heart
+                          type: service
+                          data:
+                            entity_id: media_player.musikgruppen
+                            uri: 'spotify:playlist:37i9dQZEVXcE0deD7CPGV9'
+                            random_song: true
+                            shuffle: true

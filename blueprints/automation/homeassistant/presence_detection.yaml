@@ -1,0 +1,4 @@
+blueprint:
+  name: Presense detektor
+  description: Detect the presense of a person
+  domain: automation

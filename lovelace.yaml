@@ -1,0 +1,43 @@
+mode: yaml
+resources: 
+  - url: /local/community/banner-card/banner-card.js
+    type: module
+  - url: /local/community/bootstrap-grid-card/bootstrap-grid-card.js
+    type: module
+  - url: /local/community/button-card/button-card.js
+    type: module
+  - url: /local/community/slider-button-card/slider-button-card.js
+    type: module
+  - url: /local/community/hass-hue-icons/hass-hue-icons.js
+    type: module
+  - url: /local/community/mini-media-player/mini-media-player-bundle.js
+    type: module
+  - url: /local/community/spotify-card/spotify-card.js
+    type: module
+  - url: /local/community/config-editor-card/config-editor-card.js
+    type: module
+  - url: /local/community/light-entity-card/light-entity-card.js
+    type: module
+  - url: /local/community/mini-graph-card/mini-graph-card-bundle.js
+    type: module
+  - url: /local/community/lovelace-auto-entities/auto-entities.js
+    type: module
+  - url: /hacsfiles/lovelace-auto-entities/auto-entities.js
+    type: module
+  - url: /local/community/lovelace-card-mod/card-mod.js
+    type: module
+  - url: /hacsfiles/lovelace-card-mod/card-mod.js
+    type: module
+  - url: /local/community/lovelace-slider-entity-row/slider-entity-row.js
+    type: module
+  - url: /hacsfiles/lovelace-slider-entity-row/slider-entity-row.js
+    type: module
+    
+dashboards:
+  lovelace-lab:
+    mode: yaml
+    title: YAML Lab
+    icon: mdi:test-tube
+    show_in_sidebar: true
+    require_admin: false
+    filename: ui-lab.yaml

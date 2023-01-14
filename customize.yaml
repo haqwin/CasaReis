@@ -1,0 +1,35 @@
+alarm_control_panel.sector_alarmpanel_02591027:
+  friendly_name: Larm
+  icon: mdi:lock-open
+sensor.hakan_status:
+  entity_picture: https://5bwygfqmz4lel2z0muly8xjgbxhvkbkz.ui.nabu.casa/local/haqwin.png
+sensor.annika_status:
+  entity_picture: https://5bwygfqmz4lel2z0muly8xjgbxhvkbkz.ui.nabu.casa/local/annika.jpg
+sensor.mika_status:
+  entity_picture: https://5bwygfqmz4lel2z0muly8xjgbxhvkbkz.ui.nabu.casa/local/mika2.jpg
+sensor.isan_status:
+  entity_picture: https://5bwygfqmz4lel2z0muly8xjgbxhvkbkz.ui.nabu.casa/local/isan.jpg
+light.soffa:
+  friendly_name: Soffa
+light.skrivbord:
+  friendly_name: Skrivbord
+light.spelhorna:
+  friendly_name: Spelhörna
+light.isan_tak:
+  friendly_name: Isan tak
+light.mika_tak:
+  friendly_name: Mika tak
+light.huset:
+  friendly_name: Hela huset
+light.koksyta:
+  icon: hass:led-strip
+light.kokstak:
+  icon: hass:ceiling-light
+light.hall:
+  icon: hass:dome-light
+light.koksbank:
+  icon: hass:led-strip-variant
+light.allrum:
+  friendly_name: Allrum
+light.koksfonster:
+  icon: hass:spotlight-beam

@@ -1,0 +1,137 @@
+id: mi01
+title: Mika
+icon: mdi:pencil-outline
+background: '#3C3C3C'
+path: mika
+visible: false
+badges: []
+cards:
+
+  - type: custom:mod-card
+    style: |
+      ha-card {
+        padding: 8px 12px 38px 12px;
+      }
+    card:
+
+      type: vertical-stack
+      cards:
+
+      - type: custom:button-card
+        template: title_navigate
+        name: Mika
+        icon: 'mdi:chevron-double-left'
+        styles:
+          card:
+            - padding-bottom: 8px
+        tap_action: 
+          action: navigate
+          navigation_path: /lovelace/level01
+
+      - type: horizontal-stack
+        cards:
+
+        - type: custom:button-card
+          template: scene
+          name: Sova
+          label: Svagt
+          icon: mdi:chat-sleep
+          entity: script.mika__ceiling_low   
+
+        - type: custom:button-card
+          template: scene
+          name: Plugga
+          label: Medium
+          icon: mdi:laptop-windows
+          entity: script.mika__ceiling_medium 
+
+        - type: custom:button-card
+          template: scene
+          name: Läsa
+          label: Ljust
+          icon: mdi:book-open-page-variant
+          entity: script.mika_ceiling_bright   
+            
+        - type: custom:button-card
+          template: empty
+
+        - type: custom:button-card
+          template: empty
+
+
+      - type: entities
+        show_header_toggle: false
+        entities:
+
+          - entity: light.mika_tak
+            name: Taket
+
+          - type: 'custom:slider-entity-row'
+            entity: light.mika_tak
+            full_row: true
+            hide_state: true
+
+        style: |
+          ha-card {
+            background: #EFEFEF;
+            color: black;
+            border-radius: 5px;
+            margin:  24px -2px 8px -2px;
+          }
+
+      - type: horizontal-stack
+        cards:
+
+          - type: custom:button-card
+            template: toggle
+            entity: light.mika_tak_1
+            name: Tak 1
+            icon: mdi:ceiling-light
+            hold_action:
+              action: more-info  
+
+          - type: custom:button-card
+            template: toggle
+            entity: light.mika_tak_2
+            name: Tak 2
+            icon: mdi:ceiling-light
+            hold_action:
+              action: more-info  
+
+          - type: custom:button-card
+            template: toggle
+            entity: light.mika_tak_3
+            name: Tak 3
+            icon: mdi:ceiling-light
+            hold_action:
+              action: more-info  
+
+          - type: custom:button-card
+            template: empty
+
+          - type: custom:button-card
+            template: empty
+
+          - type: custom:button-card
+            template: empty
+
+      - type: entities
+        show_header_toggle: false
+        entities:
+
+          - entity: light.mika_golvlampa
+            name: Golvlampa
+
+          - type: 'custom:slider-entity-row'
+            entity: light.mika_golvlampa
+            full_row: true
+            hide_state: true
+
+        style: |
+          ha-card {
+            background: #EFEFEF;
+            color: black;
+            border-radius: 5px;
+            margin:  24px -2px 8px -2px;
+          }          
+

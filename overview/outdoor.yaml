@@ -1,0 +1,231 @@
+id: od01
+title: Ute
+path: outdoor
+background: '#3C3C3C'
+icon: mdi:tree
+badges: []
+cards:
+
+  - type: custom:mod-card
+    style: |
+      ha-card {
+        padding: 8px 12px 38px 12px;
+      }
+    card:
+
+      type: vertical-stack
+      cards:
+
+      - type: custom:button-card
+        template: title_navigate
+        name: Utomhus
+        icon: 'mdi:chevron-double-left'
+        styles:
+          card:
+            - padding-bottom: 8px
+        tap_action: 
+          action: navigate
+          navigation_path: /lovelace/level01
+          
+      - type: horizontal-stack
+        cards:
+              - type: custom:button-card
+                template: scene
+                name: Relaxa
+                label: Dämpat
+                icon: mdi:glass-wine
+                entity: script.garden_cozy
+
+              - type: custom:button-card
+                template: scene
+                name: Stilla
+                label: Svagt
+                icon: mdi:weather-sunset
+                entity: script.garden_low
+
+              - type: custom:button-card
+                template: scene
+                name: Aktivitet
+                label: Ljust
+                icon: mdi:weather-sunny
+                entity: script.garden_bright
+
+              - type: custom:button-card
+                template: empty
+
+              - type: custom:button-card
+                template: empty
+
+              - type: custom:button-card
+                template: empty
+
+      - type: entities
+        show_header_toggle: false
+        entities:
+
+          - entity: light.baksidan
+            name: Baksidan
+
+          - type: 'custom:slider-entity-row'
+            entity: light.baksidan
+            full_row: true
+            hide_state: true
+
+        style: |
+          ha-card {
+            background: #EFEFEF;
+            color: black;
+            border-radius: 5px;
+            margin:  24px -2px 8px -2px;
+          }
+
+      - type: horizontal-stack
+        cards:
+
+          - type: custom:button-card
+            template: toggle
+            entity: light.koksentre
+            name: Altan
+            icon: mdi:coach-lamp
+            hold_action:
+              action: more-info  
+
+          - type: custom:button-card
+            template: toggle
+            entity: light.pollare
+            name: Pollare
+            icon: mdi:lava-lamp
+            hold_action:
+              action: more-info  
+
+          - type: custom:button-card
+            template: toggle
+            entity: light.groventre
+            name: Grovkök
+            icon: mdi:coach-lamp
+            hold_action:
+              action: more-info  
+
+          - type: custom:button-card
+            template: toggle
+            entity: light.garage
+            name: Garage
+            icon: mdi:coach-lamp
+            hold_action:
+              action: more-info  
+
+          - type: custom:button-card
+            template: toggle
+            entity: light.forradsdorr
+            name: Förråd
+            icon: mdi:coach-lamp
+            hold_action:
+              action: more-info  
+
+          - type: custom:button-card
+            template: toggle
+            entity: light.pool
+            name: Poolen
+            icon: mdi:coach-lamp
+            hold_action:
+              action: more-info  
+
+
+      - type: entities
+        show_header_toggle: false
+        entities:
+
+          - entity: light.framsidan
+            name: Framsidan
+
+          - type: 'custom:slider-entity-row'
+            entity: light.framsidan
+            full_row: true
+            hide_state: true
+
+        style: |
+          ha-card {
+            background: #EFEFEF;
+            color: black;
+            border-radius: 5px;
+            margin:  24px -2px 8px -2px;
+          }
+
+      - type: horizontal-stack
+        cards:
+
+          - type: custom:button-card
+            template: toggle
+            entity: light.huvudentre
+            name: Entré
+            icon: mdi:coach-lamp
+            hold_action:
+              action: more-info  
+
+          - type: custom:button-card
+            template: toggle
+            entity: light.altandorr
+            name: Altan
+            icon: mdi:coach-lamp
+            hold_action:
+              action: more-info  
+
+          - type: custom:button-card
+            template: toggle
+            entity: light.balkongdorr
+            name: Balkong
+            icon: mdi:coach-lamp
+            hold_action:
+              action: more-info                            
+
+          - type: custom:button-card
+            template: empty
+
+          - type: custom:button-card
+            template: empty
+
+          - type: custom:button-card
+            template: empty
+
+      - type: custom:button-card
+        template: title_navigate
+        name: Väder & vind
+        icon: 'mdi:chevron-double-left'
+        styles:
+          card:
+            - padding-top: 24px
+        tap_action: 
+          action: navigate
+          navigation_path: /lovelace/level01
+
+      - type: entities
+        show_header_toggle: false
+        entities:
+          # - sensor.ute_temperature
+          # - sensor.nere_temperature
+          - sensor.allrum_temperature
+          - sensor.vardagsrum_temperature
+
+        style: |
+          ha-card {
+            color: black;
+            border-radius: 5px;
+            margin:  8px -2px 8px -2px;
+            background: #FFFFFF url("/local/climate01.png") no-repeat;
+            background-size: cover;
+            background-position: center;
+          }
+
+      - type: weather-forecast
+        entity: weather.smhi_home
+
+        style: |
+          ha-card {
+            color: black;
+            border-radius: 5px;
+            margin:  8px -2px 8px -2px;
+            background: #FFFFFF;
+            }
+          }
+
+

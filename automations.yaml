@@ -1,0 +1,532 @@
+- id: blink_start_on_arm
+  alias: Blink på vid larm på
+  trigger:
+  - platform: state
+    entity_id: alarm_control_panel.sector_alarmpanel_02591027
+    to: armed_away
+  - platform: state
+    entity_id: alarm_control_panel.sector_alarmpanel_02591027
+    to: armed_home
+  action:
+  - service: alarm_control_panel.alarm_arm_away
+    data: {}
+    target:
+      entity_id: alarm_control_panel.blink_casa_reis
+  - service: notify.mobile_app_pixel_6
+    data:
+      title: Larmet
+      message: Någon har larmat på!
+  initial_state: true
+  mode: single
+- id: blink_stop_on_disarm
+  alias: Blink av vid larm av
+  trigger:
+  - platform: state
+    entity_id: alarm_control_panel.sector_alarmpanel_02591027
+    to: pending
+    from: armed_away
+  - platform: state
+    entity_id: alarm_control_panel.sector_alarmpanel_02591027
+    to: disarmed
+  action:
+  - service: alarm_control_panel.alarm_disarm
+    data: {}
+    target:
+      entity_id: alarm_control_panel.blink_casa_reis
+  - service: notify.mobile_app_pixel_6
+    data:
+      title: Larmet
+      message: Någon har larmat av!
+  initial_state: true
+  mode: single
+- id: movement_familyroom
+  alias: Allrum rörelse vid larm
+  trigger:
+  - entity_id: binary_sensor.allrum_motion
+    platform: state
+    to: 'on'
+  condition:
+  - condition: state
+    entity_id: alarm_control_panel.sector_alarmpanel_02591027
+    state: armed_away
+  action:
+  - service: notify.mobile_app_pixel_6
+    data:
+      message: Rörelse detekterad i allrummet!
+      title: Allrummet!
+- id: movement_livingroom
+  alias: Vardagsrum rörelse vid larm
+  trigger:
+  - entity_id: binary_sensor.vardagsrum_motion
+    platform: state
+    to: 'on'
+  condition:
+  - condition: state
+    entity_id: alarm_control_panel.sector_alarmpanel_02591027
+    state: armed_away
+  action:
+  - service: notify.mobile_app_pixel_6
+    data:
+      message: Rörelse detekterad i vardagsrummet!
+      title: Vardagsrummet!
+- id: tv_livingroom_playing
+  alias: TV streamar
+  trigger:
+  - platform: state
+    entity_id:
+    - media_player.tv_vardagsrummet
+    to: playing
+  - platform: state
+    entity_id:
+    - media_player.tv_vardagsrummet
+    to: Buffering
+  condition:
+  - condition: sun
+    after: sunset
+    after_offset: -3600
+  action:
+  - service: script.livingroom_tv
+    data: {}
+  initial_state: true
+- id: tv_livingroom_not_playing
+  alias: TV streamar inte
+  trigger:
+  - platform: state
+    entity_id:
+    - media_player.tv_vardagsrummet
+    to: 'off'
+  - platform: state
+    entity_id:
+    - media_player.tv_vardagsrummet
+    from: playing
+  condition:
+  - condition: sun
+    after: sunset
+    after_offset: -3600
+  action:
+  - service: script.sofa_medium
+    data: {}
+  initial_state: true
+- id: house_lights_on_sunset
+  alias: Huset tänds vid solnedgång
+  trigger:
+  - platform: sun
+    event: sunset
+    offset: -00:45:00
+  action:
+  - service: script.turn_on
+    entity_id:
+    - script.downstairs_on
+    - script.upstairs_on_evening
+  initial_state: true
+  mode: single
+- id: house_lights_off_midnight
+  alias: Huset släcks vid midnatt
+  trigger:
+  - platform: time
+    at: '23:59:59'
+  action:
+  - service: script.downstairs_off
+    data: {}
+  - service: script.upstairs_off_evening
+    data: {}
+  initial_state: true
+- id: house_on_before_6_weekdays
+  alias: Huset tänds vid 6 vardagar
+  initial_state: true
+  trigger:
+  - at: 05:55:00
+    platform: time
+  action:
+  - service: script.turn_on
+    entity_id:
+    - script.downstairs_on
+    - script.upstairs_on_morning
+  condition:
+    condition: and
+    conditions:
+    - condition: sun
+      before: sunrise
+      before_offset: 00:30:00
+    - condition: time
+      after: 04:00:00
+      weekday:
+      - mon
+      - tue
+      - wed
+      - thu
+      - fri
+- id: house_off_sunrise
+  alias: Huset släcks vid soluppgång
+  trigger:
+  - event: sunrise
+    offset: 00:45:00
+    platform: sun
+  action:
+  - service: script.downstairs_off
+    data: {}
+  - service: script.upstairs_off_morning
+    data: {}
+  initial_state: true
+- id: garden_on_sunset
+  alias: Trädgård tänds vid solnedgång
+  initial_state: true
+  trigger:
+  - platform: sun
+    event: sunset
+  action:
+  - service: script.garden_on
+- id: garden_off_sunrise
+  alias: Trädgård släcks vid soluppgång
+  initial_state: true
+  trigger:
+  - platform: sun
+    event: sunrise
+  action:
+  - service: script.garden_off
+- id: pres_hakan_arrived
+  alias: Närvaro Håkan kom
+  initial_state: true
+  trigger:
+  - platform: state
+    entity_id: person.hakan
+    to: home
+  action:
+  - service: input_select.select_option
+    data_template:
+      entity_id: input_select.hakan_status_dropdown
+      option: "{% if states.input_select.hakan_status_dropdown.state == 'left' %}\n
+        \ home\n{% else %}\n  arrived\n{% endif %}\n"
+- id: pres_hakan_home
+  alias: Närvaro Håkan hemma
+  initial_state: true
+  trigger:
+  - platform: state
+    entity_id: input_select.hakan_status_dropdown
+    to: arrived
+    for:
+      minutes: 10
+  - platform: state
+    entity_id: input_select.hakan_status_dropdown
+    from: left
+    to: arrived
+  action:
+  - service: input_select.select_option
+    data:
+      entity_id: input_select.hakan_status_dropdown
+      option: home
+- id: pres_hakan_just_left
+  alias: Närvaro Håkan gick
+  initial_state: true
+  trigger:
+  - platform: state
+    entity_id: person.hakan
+    to: not_home
+  action:
+  - service: input_select.select_option
+    data:
+      entity_id: input_select.hakan_status_dropdown
+      option: left
+- id: pres_hakan_away
+  alias: Närvaro Håkan borta
+  initial_state: true
+  trigger:
+  - platform: state
+    entity_id: input_select.hakan_status_dropdown
+    to: left
+    for:
+      minutes: 10
+  action:
+  - service: input_select.select_option
+    data:
+      entity_id: input_select.hakan_status_dropdown
+      option: away
+- id: pres_annika_arrived
+  alias: Närvaro Annika kom
+  initial_state: true
+  trigger:
+  - platform: state
+    entity_id: person.annika
+    to: home
+  action:
+  - service: input_select.select_option
+    data_template:
+      entity_id: input_select.annika_status_dropdown
+      option: "{% if states.input_select.annika_status_dropdown.state == 'left' %}\n
+        \ home\n{% else %}\n  arrived\n{% endif %}\n"
+- id: pres_annika_home
+  alias: Närvaro Annika hemma
+  initial_state: true
+  trigger:
+  - platform: state
+    entity_id: input_select.annika_status_dropdown
+    to: arrived
+    for:
+      minutes: 10
+  - platform: state
+    entity_id: input_select.annika_status_dropdown
+    from: left
+    to: arrived
+  action:
+  - service: input_select.select_option
+    data:
+      entity_id: input_select.annika_status_dropdown
+      option: home
+- id: pres_annika_just_left
+  alias: Närvaro Annika gick
+  initial_state: true
+  trigger:
+  - platform: state
+    entity_id: person.annika
+    to: not_home
+  action:
+  - service: input_select.select_option
+    data:
+      entity_id: input_select.annika_status_dropdown
+      option: left
+- id: pres_annika_away
+  alias: Närvaro Annika borta
+  trigger:
+  - platform: state
+    entity_id: input_select.annika_status_dropdown
+    to: left
+    for:
+      minutes: 10
+  action:
+  - service: input_select.select_option
+    data:
+      entity_id: input_select.annika_status_dropdown
+      option: away
+- id: pres_mika_arrived
+  alias: Närvaro Mika kom
+  initial_state: true
+  trigger:
+  - platform: state
+    entity_id: person.mika
+    to: home
+  action:
+  - service: input_select.select_option
+    data_template:
+      entity_id: input_select.mika_status_dropdown
+      option: "{% if states.input_select.mika_status_dropdown.state == 'left' %}\n
+        \ home\n{% else %}\n  arrived\n{% endif %}\n"
+- id: pres_mika_home
+  alias: Närvaro Mika hemma
+  initial_state: true
+  trigger:
+  - platform: state
+    entity_id: input_select.mika_status_dropdown
+    to: arrived
+    for:
+      minutes: 10
+  - platform: state
+    entity_id: input_select.mika_status_dropdown
+    from: left
+    to: arrived
+  action:
+  - service: input_select.select_option
+    data:
+      entity_id: input_select.mika_status_dropdown
+      option: home
+- id: pres_mika_just_left
+  alias: Närvaro Mika gick
+  initial_state: true
+  trigger:
+  - platform: state
+    entity_id: person.mika
+    to: not_home
+  action:
+  - service: input_select.select_option
+    data:
+      entity_id: input_select.mika_status_dropdown
+      option: left
+- id: pres_mika_away
+  alias: Närvaro Mika borta
+  initial_state: true
+  trigger:
+  - platform: state
+    entity_id: input_select.mika_status_dropdown
+    to: left
+    for:
+      minutes: 10
+  action:
+  - service: input_select.select_option
+    data:
+      entity_id: input_select.mika_status_dropdown
+      option: away
+- id: pres_isan_arrived
+  alias: Närvaro Isan kom
+  initial_state: true
+  trigger:
+  - platform: state
+    entity_id: person.isan
+    to: home
+  action:
+  - service: input_select.select_option
+    data_template:
+      entity_id: input_select.isan_status_dropdown
+      option: "{% if states.input_select.isan_status_dropdown.state == 'left' %}\n
+        \ home\n{% else %}\n  arrived\n{% endif %}\n"
+- id: pres_isan_home
+  alias: Närvaro Isan hemma
+  initial_state: true
+  trigger:
+  - platform: state
+    entity_id: input_select.isan_status_dropdown
+    to: arrived
+    for:
+      minutes: 10
+  - platform: state
+    entity_id: input_select.isan_status_dropdown
+    from: left
+    to: arrived
+  action:
+  - service: input_select.select_option
+    data:
+      entity_id: input_select.isan_status_dropdown
+      option: home
+- id: pres_isan_just_left
+  alias: Närvaro Isan gick
+  initial_state: true
+  trigger:
+  - platform: state
+    entity_id: person.isan
+    to: not_home
+  action:
+  - service: input_select.select_option
+    data:
+      entity_id: input_select.isan_status_dropdown
+      option: left
+- id: pres_isan_away
+  alias: Närvaro Isan borta
+  initial_state: true
+  trigger:
+  - platform: state
+    entity_id: input_select.isan_status_dropdown
+    to: left
+    for:
+      minutes: 10
+  action:
+  - service: input_select.select_option
+    data:
+      entity_id: input_select.isan_status_dropdown
+      option: away
+- id: '1613563852149'
+  alias: Vardagsrum nattljus
+  description: Nattljus för vardagsrummet
+  use_blueprint:
+    path: homeassistant/night_light.yaml
+    input:
+      motion_entity: binary_sensor.vardagsrum_motion
+      no_motion_wait: '320'
+      light_target:
+        entity_id:
+        - light.soffa
+      off_time: '5:30:00'
+      on_time: 0:30:00
+- id: '1613574289526'
+  alias: Allrum nattljus
+  description: Nattljust för allrummet
+  use_blueprint:
+    path: homeassistant/night_light.yaml
+    input:
+      no_motion_wait: '320'
+      motion_entity: binary_sensor.allrum_motion
+      light_target:
+        entity_id:
+        - light.spelhorna
+      off_time: '5:30:00'
+      on_time: 0:30:00
+- id: '1614528714326'
+  alias: Köksbänk på/av
+  description: ''
+  use_blueprint:
+    path: homeassistant/switched_light.yaml
+    input:
+      switch_source: binary_sensor.shelly_i3_kitchen_s3
+      light_target:
+        entity_id: light.koksbank
+- id: '1614528815131'
+  alias: Köksfönster på/av
+  description: ''
+  use_blueprint:
+    path: homeassistant/switched_light.yaml
+    input:
+      switch_source: binary_sensor.shelly_i3_kitchen_s2
+      light_target:
+        entity_id: light.koksfonster
+- id: '1614528838193'
+  alias: Kökstak på/av
+  description: ''
+  use_blueprint:
+    path: homeassistant/switched_light.yaml
+    input:
+      light_target:
+        entity_id: light.kokstak
+      switch_source: binary_sensor.shelly_i3_kitchen_s1
+- id: haqwin_set_next_alarm_start
+  alias: Väckning uppdatera nästa tid
+  description: Just a trigger workaround
+  mode: restart
+  trigger:
+  - platform: state
+    entity_id: sensor.pixel_6_next_alarm
+  action:
+  - delay:
+      seconds: 2
+  - service: input_datetime.set_datetime
+    entity_id: input_datetime.haqwin_next_alarm_start
+    data_template:
+      datetime: '{{ (as_timestamp(states("sensor.haqwin_next_alarm")) + (states("input_number.wakeup_lights_timer_offset_minutes")
+        | int*60)) | timestamp_local }}'
+- id: haqwin_wakeup_lights_bedroom
+  alias: Väcking ljus i sovrum
+  description: ''
+  trigger:
+  - platform: template
+    value_template: '{{ states("sensor.date_time") == as_timestamp(states("input_datetime.haqwin_next_alarm_start"))
+      | timestamp_custom("%Y-%m-%d, %H:%M", true) }}'
+  condition:
+  - condition: state
+    entity_id: input_boolean.haqwin_alarm_enabled
+    state: 'on'
+  action:
+  - service: script.bed_wakeup
+    data:
+      transition: '{{ (states(''input_number.wakeup_lights_timer_transition_minutes'')
+        | int/3) | int*60 }}'
+  - delay:
+      minutes: '{{ (states(''input_number.wakeup_lights_timer_delay_minutes'') | int
+        - states(''input_number.wakeup_lights_timer_transition_minutes'') | int) }}'
+  - service: script.bed_medium
+  - delay:
+      seconds: 2
+  - service: light.turn_off
+    data:
+      entity_id: light.sovrum
+- id: '1646407561329'
+  alias: _stream
+  description: ''
+  trigger:
+  - platform: homeassistant
+    event: start
+  condition: []
+  action:
+  - service: media_player.play_media
+    target:
+      entity_id: media_player.navet
+    data:
+      media_content_id: lovelace-lab/lab_lab
+      media_content_type: lovelace
+    metadata:
+      title: Lab
+      thumbnail: https://brands.home-assistant.io/_/lovelace/logo.png
+      media_class: app
+      children_media_class:
+      navigateIds:
+      - {}
+      - media_content_type: lovelace
+        media_content_id: ''
+      - media_content_type: lovelace
+        media_content_id: lovelace-lab
+  mode: single

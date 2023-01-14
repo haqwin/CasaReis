@@ -1,0 +1,36 @@
+blueprint:
+  name: Light on & off switch
+  description: Switch a light on and off based on a switch
+  domain: automation
+  input:
+    light_target:
+      name: Light
+      selector:
+        target:
+          entity:
+            domain: light
+    switch_source:
+      name: Switch
+      selector:
+        entity:
+          integration: shelly
+
+mode: single
+
+trigger:
+- platform: state
+  entity_id: !input switch_source
+
+condition: []
+
+variables:
+  switch_state: !input switch_source
+
+action:
+  - service_template: >
+      {% if is_state(switch_state, 'on') %}
+        light.turn_on
+      {% else %}
+        light.turn_off
+      {% endif %}
+    target: !input light_target

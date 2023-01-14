@@ -1,0 +1,57 @@
+#presense 
+- platform: template
+  sensors:
+    hakan_status:
+      entity_id: input_select.hakan_status_dropdown
+      value_template: '{{ states.input_select.hakan_status_dropdown.state }}'
+      friendly_name: 'Håkan'
+    annika_status:
+      entity_id: input_select.annika_status_dropdown
+      value_template: '{{ states.input_select.annika_status_dropdown.state }}'
+      friendly_name: 'Annika'
+    mika_status:
+      entity_id:  input_select.mika_status_dropdown
+      value_template: '{{ states.input_select.mika_status_dropdown.state }}'
+      friendly_name: 'Mika'
+    isan_status:
+      entity_id:  input_select.isan_status_dropdown
+      value_template: '{{ states.input_select.isan_status_dropdown.state }}'
+      friendly_name: 'Isan'
+
+# wake up lights haqwin - phone alarm
+- platform: template
+  sensors:
+    haqwin_next_alarm_short:
+      friendly_name: 'Nästa väckning klockan'
+      icon_template: mdi:alarm
+      # device_class: timestamp
+      value_template: >
+        {{ as_timestamp(states('sensor.haqwin_next_alarm')) | timestamp_custom('%H:%M') }}
+    haqwin_next_alarm:
+      friendly_name: 'Nästa väckning'
+      icon_template: mdi:alarm
+      # device_class: timestamp
+      value_template: >
+        {{ as_timestamp(states('sensor.pixel_6_next_alarm')) | timestamp_local }}
+    haqwin_next_alarm_start:
+      friendly_name: 'Nästa ljusväckning'
+      icon_template: mdi:alarm
+      # device_class: timestamp
+      value_template: >
+        {{ (as_timestamp(states('sensor.pixel_6_next_alarm')) + (states('input_number.wakeup_lights_timer_offset_minutes') | int*60)) | timestamp_local }}
+    haqwin_next_alarm_off:
+      friendly_name: 'Nästa ljusväckning av'
+      icon_template: mdi:alarm-off
+      # device_class: timestamp
+      value_template: >
+        {{ (as_timestamp(states('sensor.pixel_6_next_alarm')) + (states('input_number.wakeup_lights_timer_offset_minutes') | int*60) + (states('input_number.wakeup_lights_timer_delay_minutes') | int*60)) | timestamp_local }}
+# timer triggers
+- platform: time_date
+  display_options:
+    - 'time'
+    - 'date'
+    - 'date_time'
+    - 'date_time_iso'
+    - 'time_date'
+    - 'time_utc'
+    - 'beat'

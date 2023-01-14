@@ -1,0 +1,135 @@
+id: ah01
+title: Sovrum
+icon: mdi:bed-double-outline
+background: '#3C3C3C'
+path: bedroom
+visible: false
+badges: []
+cards:
+
+  - type: custom:mod-card
+    style: |
+      ha-card {
+        padding: 8px 12px 38px 12px;
+      }
+    card:
+
+      type: vertical-stack
+      cards:
+
+      - type: custom:button-card
+        template: title_navigate
+        name: Håkan & Annika
+        icon: 'mdi:chevron-double-left'
+        styles:
+          card:
+            - padding-bottom: 8px
+        tap_action: 
+          action: navigate
+          navigation_path: /lovelace/level01
+
+      - type: horizontal-stack
+        cards:
+        - type: custom:button-card
+          template: scene
+          name: Sova
+          label: Svagt
+          icon: mdi:chat-sleep
+          entity: script.bed_low     
+
+        - type: custom:button-card
+          template: scene
+          name: Se TV
+          label: Medium
+          icon: mdi:television-classic
+          entity: script.bed_medium     
+
+        - type: custom:button-card
+          template: scene
+          name: Läsa
+          label: Ljust
+          icon: mdi:book-open-page-variant
+          entity: script.bed_bright      
+
+        - type: custom:button-card
+          template: empty
+
+        - type: custom:button-card
+          template: empty
+
+      - type: custom:mod-card
+        style: |
+          ha-card {
+            border-radius: 5px;
+            background: #25251C;
+            margin:  24px 0px 0px 0px;
+            padding: 16px;
+            border: solid 1px rgba(0,0,0,0.01);
+            box-shadow:0px 1px rgba(0,0,0,0.3); 
+          }
+        card:
+
+          type: vertical-stack
+          cards:
+          
+          - type: 'custom:mini-media-player'
+            entity: media_player.tv_sovrummet
+            icon: 'mdi:television-classic'
+            artwork: cover 
+            group: true
+            style: |
+              ha-card {
+                margin:  0px 0px 0px 0px;
+                padding: 0px 0px 0px 0px;
+                  }
+
+      - type: entities
+        show_header_toggle: false
+        entities:
+
+          - entity: light.sovrum
+            name: Sängen
+
+          - type: 'custom:slider-entity-row'
+            entity: light.sovrum
+            full_row: true
+            hide_state: true
+
+        style: |
+          ha-card {
+            background: #EFEFEF;
+            color: black;
+            border-radius: 5px;
+            margin:  24px -2px 8px -2px;
+          }
+
+      - type: horizontal-stack
+        cards:
+
+          - type: custom:button-card
+            template: toggle
+            entity: light.sovrum_hakan
+            name: Håkan
+            icon: mdi:lamp
+            hold_action:
+              action: more-info
+
+          - type: custom:button-card
+            template: toggle
+            entity: light.sovrum_annika
+            name: Annika
+            icon: mdi:lamp
+            hold_action:
+              action: more-info
+                            
+          - type: custom:button-card
+            template: empty
+
+          - type: custom:button-card
+            template: empty
+
+          - type: custom:button-card
+            template: empty
+
+          - type: custom:button-card
+            template: empty

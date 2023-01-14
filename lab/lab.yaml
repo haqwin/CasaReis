@@ -1,0 +1,199 @@
+title: Lab
+icon: mdi:test-tube-empty
+background: '#191922'
+background: center / cover no-repeat url("https://5bwygfqmz4lel2z0muly8xjgbxhvkbkz.ui.nabu.casa/local/green2.png") fixed
+path: lab_lab
+panel: true
+badges: []
+cards:
+
+  - type: custom:mod-card
+    style: |
+      ha-card {
+        padding: 16px 16px 16px 16px;
+      }
+    card:
+
+      type: vertical-stack
+      cards:
+
+      - type: custom:button-card
+        template: title
+        name: Överblick
+
+      - type: horizontal-stack
+        cards:
+
+        - type: vertical-stack
+          cards:
+          
+          - type: horizontal-stack
+            cards:
+
+            - type: custom:button-card
+              template: scene
+              name: Se TV
+              label: Svagt
+              icon: mdi:television-classic
+              entity: script.livingroom_tv
+
+            - type: custom:button-card
+              template: scene
+              name: Umgås
+              label: Dämpat
+              icon: mdi:glass-wine
+              entity: script.livingroom_relax
+
+            - type: custom:button-card
+              template: scene
+              name: Spela
+              label: Ljust
+              icon: mdi:gamepad-variant
+              entity: script.livingroom_game
+
+            - type: custom:button-card
+              template: empty
+
+            - type: custom:button-card
+              template: empty
+
+          - type: entities
+            entities:
+              - type: custom:mini-media-player
+                entity: media_player.musikgruppen
+                group: true
+                icon: mdi:speaker-multiple
+              - type: custom:mini-media-player
+                entity: media_player.musik_studion
+                artwork: none
+                group: true
+                hide:
+                  controls: true
+                  power: true
+                  info: true
+                  progress: true
+                  icon: true
+              - type: custom:mini-media-player
+                entity: media_player.musik_vardagsrummet
+                group: true
+                artwork: none
+                hide:
+                  controls: true
+                  power: true
+                  info: true
+                  progress: true
+                  icon: true
+              - type: custom:mini-media-player
+                entity: media_player.navet
+                group: true
+                artwork: none
+                hide:
+                  controls: true
+                  power: true
+                  info: true
+                  progress: true
+                  icon: true
+              - type: custom:mini-media-player
+                entity: media_player.musik_koket
+                group: true
+                artwork: none
+                hide:
+                  controls: true
+                  power: true
+                  info: true
+                  progress: true
+                  icon: true
+                shortcuts:
+                  columns: 4 # Max buttons per row
+                  buttons:
+                  - id: spotcast.start
+                    # name: Breakfast
+                    icon: mdi:weather-sunset
+                    type: service
+                    data:
+                      entity_id: media_player.musikgruppen
+                      uri: 'spotify:playlist:4EZBolHyyIGbDKVw6eXz7p'
+                      random_song: true
+                      shuffle: true
+                      
+                  - id: spotcast.start
+                    name: ´22
+                    # icon: mdi:bookmark-music-outline
+                    type: service
+                    data:
+                      entity_id: media_player.musikgruppen
+                      uri: 'spotify:playlist:1rbyoMwrVqytS56wXMz79V'
+                      random_song: true
+                      shuffle: true
+                      
+                  - id: spotcast.start
+                    # name: Workout
+                    icon: mdi:shoe-sneaker
+                    type: service
+                    data:
+                      entity_id: media_player.musikgruppen
+                      uri: 'spotify:playlist:4bM9ebE40x6hXDHLXMNMm7'
+                      random_song: true
+                      shuffle: true
+
+                  - id: spotcast.start
+                    # name: Weekly
+                    icon: mdi:calendar-heart
+                    type: service
+                    data:
+                      entity_id: media_player.musikgruppen
+                      uri: 'spotify:playlist:37i9dQZEVXcE0deD7CPGV9'
+                      random_song: true
+                      shuffle: true
+
+    
+        - type: vertical-stack
+          cards:
+
+          - type: horizontal-stack
+            cards:
+
+            - type: custom:button-card
+              template: scene
+              label: Dämpat
+              name: Middag
+              icon: mdi:candle
+              show_label: true
+              aspect_ratio: 1/1
+              entity: script.kitchen_dinner
+
+            - type: custom:button-card
+              template: scene
+              label: Ljust
+              name: Frukost
+              icon: mdi:coffee
+              show_label: true
+              aspect_ratio: 1/1
+              entity: script.kitchen_breakfast
+
+            - type: custom:button-card
+              template: scene
+              label: Ljust
+              name: Laga mat
+              icon: mdi:chef-hat
+              show_label: true
+              aspect_ratio: 1/1
+              entity: script.kitchen_dinner
+
+            - type: custom:button-card
+              template: empty
+
+            - type: custom:button-card
+              template: sensor
+              entity: sensor.vardagsrum_temperature
+              name: Inne
+              label: >
+                [[[ 
+                  return parseInt(states['sensor.vardagsrum_temperature'].state) + '°C'; 
+                ]]]
+              icon: mdi:thermometer
+              show_label: true
+              aspect_ratio: 1/1
+              tap_action: 
+                action: more-info
+

@@ -1,0 +1,102 @@
+title: Säkerhet
+id: security
+path: security
+icon: 'mdi:door-closed-lock'
+background: '#3C3C3C'
+panel: false
+visible: true
+badges: []
+cards:
+
+  - type: custom:mod-card
+    style: |
+      ha-card {
+        padding: 8px 12px 38px 12px;
+      }
+    card:
+
+      type: vertical-stack
+      cards:
+
+      - type: custom:button-card
+        template: title_navigate
+        name: Säkerhet
+        icon: 'mdi:chevron-double-left'
+        tap_action: 
+          action: navigate
+          navigation_path: /lovelace/level01
+
+      - type: entities
+        title: Status
+        show_header_toggle: false
+        entities:
+          - entity: lock.dorr_fram
+          - entity: binary_sensor.allrum_motion
+          - entity: binary_sensor.vardagsrum_motion
+
+        style: |
+          ha-card {
+            background: #EFEFEF;
+            color: black;
+            border-radius: 5px;
+            margin:  8px -2px 8px -2px;
+          }
+
+            # margin:  24px -2px 8px -2px;
+            # background: #FFFFFF url("/local/garden01.png") no-repeat;
+            # background-size: cover;
+            # background-position: center;
+
+      - type: alarm-panel
+        name: Sector Alarm
+        entity: alarm_control_panel.sector_alarmpanel_02591027
+
+        states:
+          - arm_home
+          - arm_away
+
+        style: |
+          ha-card {
+            background: #EFEFEF;
+            color: black;
+            border-radius: 5px;
+            margin:  24px -2px 8px -2px;
+          }
+
+      - type: alarm-panel
+        name: Blink kameror
+        entity: alarm_control_panel.blink_casa_reis
+        states:
+          - arm_away
+
+        style: |
+          ha-card {
+            background: #EFEFEF;
+            color: black;
+            border-radius: 5px;
+            margin:  24px -2px 8px -2px;
+          }
+
+      - type: picture-entity
+        name: Köket
+        entity: camera.blink_kokeriet
+
+        style: |
+          ha-card {
+            background: #EFEFEF;
+            color: black;
+            border-radius: 5px;
+            margin:  24px -2px 8px -2px;
+          }
+
+      - type: picture-entity
+        name: Vardagsrummet
+        entity: camera.blink_vardagsrummet
+
+        style: |
+          ha-card {
+            background: #EFEFEF;
+            color: black;
+            border-radius: 5px;
+            margin:  24px -2px 8px -2px;
+          }

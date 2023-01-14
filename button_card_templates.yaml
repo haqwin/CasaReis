@@ -1,0 +1,249 @@
+empty:
+  styles:
+    card:
+      - background-color: '#00000000'
+      - box-shadow: 'none'
+
+toggle:
+  styles:
+    card:
+      - background-color: '#68829E'
+      - border-color: '#68829E'
+      - border-radius: 5px
+      - border-style: solid
+      - border-width: 1px
+      - color: ivory
+      - box-shadow: 'none'
+    grid:
+      - grid-template-areas: '"i 0" "n n" "s s"'
+      - align-content: end
+      - justify-content: start
+      - grid-template-columns: 1fr 1fr
+      - grid-template-rows: 4fr 2fr 1fr
+    icon:
+      - color: ivory
+      - width: 45%
+    img_cell:
+      - margin-left: -20%
+      - margin-top: -25%
+      - justify-self: start
+      - align-self: start
+      - text-align: start      
+    name:
+      - justify-self: start
+      - align-self: end
+      - padding-left: 3px
+      - padding-bottom: 3px
+      - font-size: 70%
+      - font-weight: 300
+    state:
+      - align-self: end
+      - justify-self: start
+      - padding-left: 3px
+      - font-size: 50%
+      - font-weight: 600
+  state:
+    - value: 'off'
+      styles:
+        card:
+          - background-color: '#3434457F'
+          - border-color: '#68829E7F'
+        icon:
+          - color: '#FFFFFF45'
+  tap_action: 
+    action: toggle
+  aspect_ratio: 1/1
+  show_state: true
+
+scene:
+  entity: '[[[ return variables.service_name ]]]'
+  styles:
+    card:
+      - background-color: '#3F4E297F'
+      - border-color: '#3F4E29'
+      - border-radius: 5px
+      - border-style: solid
+      - border-width: 1px
+      - color: ivory
+      - box-shadow: 'none'
+    grid:
+      - grid-template-areas: '"i 0" "n n" "l l"'
+      - align-content: end
+      - justify-content: start
+      - grid-template-columns: 1fr 1fr
+      - grid-template-rows: 4fr 2fr 1fr
+    icon:
+      - color: ivory
+      - width: 45%
+    img_cell:
+      - margin-left: -20%
+      - margin-top: -25%
+      - justify-self: start
+      - align-self: start
+      - text-align: start  
+    name:
+      - justify-self: start
+      - align-self: end
+      - padding-left: 3px
+      - padding-bottom: 3px
+      - font-size: 70%
+      - font-weight: 300
+    label:
+      - align-self: end
+      - justify-self: start
+      - padding-left: 3px
+      - font-size: 50%
+      - font-weight: 600¨
+  state:
+    - value: 'on'
+      styles:
+        card:
+          - background-color: '#67844DFF'
+          - border-color: '#67844DFF'
+  show_label: true
+  aspect_ratio: 1/1
+  tap_action: 
+    action: call-service
+    service: >
+      [[[ 
+        return entity.entity_id; 
+      ]]]
+
+sensor:
+  styles:
+    card:
+      - background-color: '#79456E7F'
+      - border-color: '#79456E'
+      - border-radius: 5px
+      - border-style: solid
+      - border-width: 1px
+      - color: ivory
+      - box-shadow: 'none'    
+    grid:
+      - grid-template-areas: '"i n" "l l"'
+      - grid-template-columns: 1fr 3fr
+      - grid-template-rows: 1fr 2fr
+    img_cell:
+      - justify-content: start   
+      - margin-top: -20%
+      - margin-left: 15%
+    icon:
+      - color: ivory
+      - width: 70%
+      - margin-top: -20%
+      - margin-left: 15%
+    name:
+      - justify-self: start
+      - font-size: 70%
+      - font-weight: 300
+    label:
+      - justify-self: middle
+      - align-self: end
+      - font-size: 100%
+      - font-weight: 300
+  tap_action: 
+    action: more-info
+  show_label: true
+  aspect_ratio: 1/1    
+
+navigate:   
+  styles:
+    card:
+      - background-color: '#7E50397F'
+      - border-color: '#7E5039'
+      - border-radius: 5px
+      - border-style: solid
+      - border-width: 1px
+      - color: ivory
+      - box-shadow: 'none'
+    grid:
+      - grid-template-areas: '"n i"'
+      - align-content: end
+      - justify-content: start
+      - grid-template-columns: 3fr 1fr
+    icon:
+      - color: ivory
+      - width: 60%
+    img_cell:
+      - margin-right: -15%
+      - justify-self: end
+    name:
+      - justify-self: start
+      - align-self: middle
+      - padding-left: 5px
+      - font-size: 85%
+      - font-weight: 300
+
+user:
+  styles:
+    card:
+      - border-color: '#EBAB2C'
+      - border-radius: 100px
+      - border-style: solid
+      - border-width: 3px
+      - padding: 0
+      - margin: 0
+      - box-shadow: 'none'
+    entity_picture:
+      - width: 100%
+  show_name: false
+  show_entity_picture: true
+  tap_action:
+    action: more-info          
+  state:
+    - value: 'away'
+      styles:
+        card:
+          - border-color: '#FFFFFF'          
+          - filter: grayscale(100%) opacity(80%)
+    - value: 'left'
+      styles:
+        card:
+          - border-color: '#FFCA61'
+          - filter: grayscale(50%)
+    - value: 'arrived'
+      styles:
+        card:
+          - border-color: '#FFCA61'
+          - filter: grayscale(50%)
+
+title:
+  styles:
+    card:
+      - background-color: '#00000000'
+      - box-shadow: 'none'
+      - color: ivory
+      - padding: 0
+      - margin-top: 3px
+      - margin-top: 3px
+    name:
+      - justify-self: start
+      - font-size: 150%
+      - font-weight: 300
+  tap_action: 
+    action: none  
+
+title_navigate:
+  styles:
+    card:
+      - background-color: '#00000000'
+      - box-shadow: 'none'
+      - color: ivory
+      - padding: 0
+    grid:
+      - grid-template-areas: '"n i"'
+      - align-content: end
+      - justify-content: start
+      - grid-template-columns: 3fr 1fr
+    name:
+      - justify-self: start
+      - font-size: 150%
+      - font-weight: 300
+    icon:
+      - color: ivory
+      - width: 20%
+    img_cell:
+      - margin-right: -35%
+      - margin-bottom: -5%
+      - justify-self: end
+

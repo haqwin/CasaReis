@@ -1,0 +1,9 @@
+title: YAML Lab
+name: yaml_lab
+
+button_card_templates: !include button_card_templates.yaml
+
+views:
+  - !include lab/lab.yaml
+  - !include lab/alarm.yaml
+  

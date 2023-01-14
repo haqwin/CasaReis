@@ -1,0 +1,19 @@
+title: Playground
+icon: mdi:air-horn
+background: '#3C3C3C'
+path: kitchen_playground
+panel: false
+badges: []
+cards:
+
+  - type: entities
+    state_color: true
+    title: Väckningsljus Sovrum
+    entities:
+    - entity: input_boolean.haqwin_alarm_enabled
+    - entity: sensor.haqwin_next_alarm
+    - entity: sensor.haqwin_next_alarm_start
+    - entity: sensor.haqwin_next_alarm_off
+    - entity: input_number.wakeup_lights_timer_transition_minutes
+    - entity: input_number.wakeup_lights_timer_offset_minutes
+    - entity: input_number.wakeup_lights_timer_delay_minutes

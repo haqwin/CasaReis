@@ -1,0 +1,193 @@
+id: ar02
+title: Arbetsrum
+icon: mdi:desk-lamp
+background: '#3C3C3C'
+path: office
+visible: false
+badges: []
+cards:
+
+  - type: custom:mod-card
+    style: |
+      ha-card {
+        padding: 8px 12px 38px 12px;
+      }
+    card:
+
+      type: vertical-stack
+      cards:
+
+      - type: custom:button-card
+        template: title_navigate
+        name: Arbetsrummet
+        icon: 'mdi:chevron-double-left'
+        styles:
+          card:
+            - padding-bottom: 8px
+        tap_action: 
+          action: navigate
+          navigation_path: /lovelace/level01
+
+      - type: horizontal-stack
+        cards:
+
+        - type: custom:button-card
+          template: scene
+          name: Ambient
+          label: Dämpat
+          icon: mdi:power-sleep
+          entity: script.office_low
+
+        - type: custom:button-card
+          template: scene
+          name: Läsa
+          label: Medium
+          icon: mdi:book-open-page-variant
+          entity: script.office_medium
+            
+        - type: custom:button-card
+          template: scene
+          name: Jobba
+          label: Ljust
+          icon: mdi:laptop
+          entity: script.office_bright
+
+        - type: custom:button-card
+          template: empty
+
+        - type: custom:button-card
+          template: empty
+
+
+      - type: custom:mod-card
+        style: |
+          ha-card {
+            border-radius: 5px;
+            background: #25251C;
+            margin:  24px 0px 0px 0px;
+            padding: 16px;
+            border: solid 1px rgba(0,0,0,0.01);
+            box-shadow:0px 1px rgba(0,0,0,0.3);  
+          }
+        card:
+
+          type: vertical-stack
+          cards:
+          - type: 'custom:mini-media-player'
+            entity: media_player.musik_studion
+            icon: mdi:speaker
+            info: short
+            group: true
+            shortcuts:
+              columns: 4 # Max buttons per row
+              buttons:
+
+                - id: spotcast.start
+                  # name: Breakfast
+                  icon: mdi:weather-sunset
+                  type: service
+                  data:
+                    entity_id: media_player.musik_studion
+                    uri: 'spotify:playlist:4EZBolHyyIGbDKVw6eXz7p'
+                    random_song: true
+                    shuffle: true
+                    
+                - id: spotcast.start
+                  name: ´22
+                  # icon: mdi:bookmark-music-outline
+                  type: service
+                  data:
+                    entity_id: media_player.musik_studion
+                    uri: 'spotify:playlist:1rbyoMwrVqytS56wXMz79V'
+                    random_song: true
+                    shuffle: true
+                    
+                - id: spotcast.start
+                  # name: Workout
+                  icon: mdi:shoe-sneaker
+                  type: service
+                  data:
+                    entity_id: media_player.musik_studion
+                    uri: 'spotify:playlist:4bM9ebE40x6hXDHLXMNMm7'
+                    random_song: true
+                    shuffle: true
+
+                - id: spotcast.start
+                  # name: Weekly
+                  icon: mdi:calendar-heart
+                  type: service
+                  data:
+                    entity_id: media_player.musik_studion
+                    uri: 'spotify:playlist:37i9dQZEVXcE0deD7CPGV9'
+                    random_song: true
+                    shuffle: true
+
+
+      - type: entities
+        show_header_toggle: false
+        entities:
+
+          - entity: light.arbetsrum
+            name: Arbetsrummet
+
+          - type: 'custom:slider-entity-row'
+            entity: light.arbetsrum
+            full_row: true
+            hide_state: true
+
+        style: |
+          ha-card {
+            background: #EFEFEF;
+            color: black;
+            border-radius: 5px;
+            margin:  24px -2px 8px -2px;
+          }
+
+      - type: horizontal-stack
+        cards:
+
+          - type: custom:button-card
+            template: toggle
+            entity: light.arbetsrum_golv
+            name: Golv
+            icon: mdi:floor-lamp
+            hold_action:
+              action: more-info  
+
+          - type: custom:button-card
+            template: toggle
+            entity: light.arbetsrum_glob
+            name: Glob
+            icon: mdi:lightbulb
+            hold_action:
+              action: more-info  
+
+          - type: custom:button-card
+            template: toggle
+            entity: light.arbetsrum_fonster
+            name: Fönster
+            icon: mdi:lamp
+            hold_action:
+              action: more-info  
+
+          - type: custom:button-card
+            template: toggle
+            entity: light.shelly_1l_r_arbetsrum_tak
+            name: Tak
+            icon: mdi:ceiling-light
+            hold_action:
+              action: more-info  
+
+          - type: custom:button-card
+            template: toggle
+            entity: light.arbetsrum_bord
+            name: Skrivbord
+            icon: mdi:lamp
+            hold_action:
+              action: more-info  
+
+          - type: custom:button-card
+            template: empty
+
+
+

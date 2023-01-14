@@ -1,0 +1,4 @@
+haqwin_alarm_enabled:
+    name: Väckning på
+    initial: true
+    

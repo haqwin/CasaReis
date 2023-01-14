@@ -1,0 +1,444 @@
+id: ki02
+title: Kök
+icon: mdi:food-apple-outline
+background: '#3C3C3C'
+path: kitchen
+visible: false
+badges: []
+cards:
+
+  - type: custom:mod-card
+    style: |
+      ha-card {
+        padding: 8px 12px 38px 12px;
+      }
+    card:
+
+      type: vertical-stack
+      cards:
+
+      - type: custom:button-card
+        template: title_navigate
+        name: Matplats & Kök
+        icon: 'mdi:chevron-double-left'
+        styles:
+          card:
+            - padding-bottom: 8px
+        tap_action: 
+          action: navigate
+          navigation_path: /lovelace/level01
+
+      - type: horizontal-stack
+        cards:
+        
+        - type: custom:button-card
+          template: scene
+          name: Middag
+          label: Dämpat
+          icon: mdi:candle
+          entity: script.kitchen_dinner
+
+        - type: custom:button-card
+          template: scene
+          name: Frukost
+          label: Ljust
+          icon: mdi:coffee
+          entity: script.kitchen_breakfast
+
+        - type: custom:button-card
+          template: scene
+          name: Laga mat
+          label: Ljust
+          icon: mdi:chef-hat
+          entity: script.kitchen_cook
+
+        - type: custom:button-card
+          template: empty
+
+        - type: custom:button-card
+          template: empty
+
+
+      - type: custom:mod-card
+        style: |
+          ha-card {
+            border-radius: 5px;
+            background: #25251C;
+            margin:  24px 0px 0px 0px;
+            padding: 16px;
+            border: solid 1px rgba(0,0,0,0.01);
+            box-shadow:0px 1px rgba(0,0,0,0.3);
+          }
+        card:
+
+          type: vertical-stack
+          cards:
+
+          - type: 'custom:mini-media-player'
+            entity: media_player.musikgrupp_koket
+            name: Matplats & Kök
+            icon: mdi:speaker-multiple
+            info: short
+            group: true
+          - type: custom:mini-media-player
+            entity: media_player.musik_koket
+            name: Köket
+            icon: mdi:speaker
+            group: true
+            artwork: none
+            hide:
+              controls: true
+              power: true
+              info: true
+              progress: true
+          - type: custom:mini-media-player
+            entity: media_player.navet
+            icon: mdi:speaker
+            group: true
+            artwork: none
+            hide:
+              controls: true
+              power: true
+              info: true
+              progress: true              
+
+            shortcuts:
+              columns: 4 # Max buttons per row
+              buttons:
+              - id: spotcast.start
+                # name: Breakfast
+                icon: mdi:weather-sunset
+                type: service
+                data:
+                  entity_id: media_player.musikgrupp_koket
+                  uri: 'spotify:playlist:4EZBolHyyIGbDKVw6eXz7p'
+                  random_song: true
+                  shuffle: true
+
+              - id: spotcast.start
+                name: ´22
+                # icon: mdi:bookmark-music-outline
+                type: service
+                data:
+                  entity_id: media_player.musikgrupp_koket
+                  uri: 'spotify:playlist:1rbyoMwrVqytS56wXMz79V'
+                  random_song: true
+                  shuffle: true
+                  
+              - id: spotcast.start
+                # name: Workout
+                icon: mdi:shoe-sneaker
+                type: service
+                data:
+                  entity_id: media_player.musikgrupp_koket
+                  uri: 'spotify:playlist:4bM9ebE40x6hXDHLXMNMm7'
+                  random_song: true
+                  shuffle: true
+
+              - id: spotcast.start
+                # name: Weekly
+                icon: mdi:calendar-heart
+                type: service
+                data:
+                  entity_id: media_player.musikgrupp_koket
+                  uri: 'spotify:playlist:37i9dQZEVXcE0deD7CPGV9'
+                  random_song: true
+                  shuffle: true
+
+
+
+    # ----------------------------------------
+    # Köksfönster
+    # ----------------------------------------
+
+      - type: entities
+        show_header_toggle: false
+        entities:
+
+          - entity: light.koksfonster
+            name: Fönsterspottar
+
+          - type: 'custom:slider-entity-row'
+            entity: light.koksfonster
+            full_row: true
+            hide_state: true
+
+        style: |
+          ha-card {
+            background: #EFEFEF;
+            color: black;
+            border-radius: 5px;
+            margin:  24px -2px 8px -2px;
+          }
+
+
+    # ----------------------------------------
+    # Arbetsbänken
+    # ----------------------------------------
+
+      - type: entities
+        show_header_toggle: false
+        entities:
+
+          - entity: light.koksbank
+            name: Arbetsbänken
+
+          - type: 'custom:slider-entity-row'
+            entity: light.koksbank
+            full_row: true
+            hide_state: true
+
+        style: |
+          ha-card {
+            background: #EFEFEF;
+            color: black;
+            border-radius: 5px;
+            margin:  24px -2px 8px -2px;
+          }
+
+      - type: horizontal-stack
+        cards:
+
+          - type: custom:button-card
+            template: toggle
+            entity: light.koksbank_1
+            name: Lång LED
+            icon: mdi:led-strip
+            hold_action:
+              action: more-info   
+              
+          - type: custom:button-card
+            template: toggle
+            entity: light.koksbank_2
+            name: Kort LED
+            icon: mdi:led-strip
+            hold_action:
+              action: more-info   
+
+          - type: custom:button-card
+            template: empty
+
+          - type: custom:button-card
+            template: empty
+
+          - type: custom:button-card
+            template: empty
+
+          - type: custom:button-card
+            template: empty
+
+
+
+
+    # ----------------------------------------
+    # Kökstak
+    # ----------------------------------------
+
+      - type: entities
+        show_header_toggle: false
+        entities:
+
+          - entity: light.kokstak
+            name: Taket
+
+          - type: 'custom:slider-entity-row'
+            entity: light.kokstak
+            full_row: true
+            hide_state: true
+
+        style: |
+          ha-card {
+            background: #EFEFEF;
+            color: black;
+            border-radius: 5px;
+            margin:  24px -2px 8px -2px;
+          }
+
+      - type: horizontal-stack
+        cards:
+   
+          - type: custom:button-card
+            template: toggle
+            entity: light.kokstak_1
+            name: Tak 1
+            icon: mdi:ceiling-light
+            hold_action:
+              action: more-info   
+
+          - type: custom:button-card
+            template: toggle
+            entity: light.kokstak_2
+            name: Tak 2
+            icon: mdi:ceiling-light
+            hold_action:
+              action: more-info  
+
+          - type: custom:button-card
+            template: toggle
+            entity: light.kokstak_3
+            name: Tak 3
+            icon: mdi:ceiling-light
+            hold_action:
+              action: more-info  
+
+          - type: custom:button-card
+            template: toggle
+            entity: light.kokstak_4
+            name: Tak 4
+            icon: mdi:ceiling-light
+            hold_action:
+              action: more-info  
+
+          - type: custom:button-card
+            template: empty
+
+          - type: custom:button-card
+            template: empty
+
+
+
+
+    # ----------------------------------------
+    # Matplats
+    # ----------------------------------------
+
+      - type: entities
+        show_header_toggle: false
+        entities:
+
+          - entity: light.matplats
+            name: Matplatsen
+
+          - type: 'custom:slider-entity-row'
+            entity: light.matplats
+            full_row: true
+            hide_state: true
+
+        style: |
+          ha-card {
+            background: #EFEFEF;
+            color: black;
+            border-radius: 5px;
+            margin:  24px -2px 8px -2px;
+          }
+
+      - type: horizontal-stack
+        cards:
+
+
+          - type: custom:button-card
+            template: toggle
+            entity: light.matplats_vanster
+            name: Vänster
+            icon: mdi:lamp
+            hold_action:
+              action: more-info  
+
+          - type: custom:button-card
+            template: toggle
+            entity: light.matplats_hoger
+            name: Höger
+            icon: mdi:lamp
+            hold_action:
+              action: more-info  
+
+          - type: custom:button-card
+            template: empty
+
+          - type: custom:button-card
+            template: empty
+
+          - type: custom:button-card
+            template: empty
+
+          - type: custom:button-card
+            template: empty
+
+
+
+
+    # ----------------------------------------
+    # Tavellampa
+    # ----------------------------------------
+
+      - type: entities
+        show_header_toggle: false
+        entities:
+
+          - entity: light.tavla
+            name: Tavlan matplats
+
+          - type: 'custom:slider-entity-row'
+            entity: light.tavla
+            full_row: true
+            hide_state: true
+
+        style: |
+          ha-card {
+            background: #EFEFEF;
+            color: black;
+            border-radius: 5px;
+            margin:  24px -2px 8px -2px;
+          }
+
+      - type: horizontal-stack
+        cards:
+
+          - type: custom:button-card
+            template: toggle
+            entity: light.tavla_1
+            name: Tavla 1
+            icon: mdi:vanity-light
+            hold_action:
+              action: more-info  
+
+          - type: custom:button-card
+            template: toggle
+            entity: light.tavla_2
+            name: Tavla 2
+            icon: mdi:vanity-light
+            hold_action:
+              action: more-info  
+
+          - type: custom:button-card
+            template: toggle
+            entity: light.tavla_3
+            name: Tavla 3
+            icon: mdi:vanity-light
+            hold_action:
+              action: more-info  
+
+          - type: custom:button-card
+            template: empty
+
+          - type: custom:button-card
+            template: empty
+
+          - type: custom:button-card
+            template: empty
+
+
+
+    # ----------------------------------------
+    # Hallen
+    # ----------------------------------------
+
+      - type: entities
+        show_header_toggle: false
+        entities:
+
+          - entity: light.hall
+            name: Hallen
+
+          - type: 'custom:slider-entity-row'
+            entity: light.hall
+            full_row: true
+            hide_state: true
+
+        style: |
+          ha-card {
+            background: #EFEFEF;
+            color: black;
+            border-radius: 5px;
+            margin:  24px -2px 8px -2px;
+          }

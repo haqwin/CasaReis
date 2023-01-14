@@ -1,0 +1,56 @@
+title: Väder
+id: cl01
+path: climate
+icon: mdi:weather-partly-cloudy
+background: '#3C3C3C'
+visible: false
+badges: []
+cards:
+
+  - type: custom:mod-card
+    style: |
+      ha-card {
+        padding: 8px 12px 38px 12px;
+      }
+    card:
+
+      type: vertical-stack
+      cards:
+
+      - type: custom:button-card
+        template: title_navigate
+        name: Väder & vind
+        icon: 'mdi:chevron-double-left'
+        tap_action: 
+          action: navigate
+          navigation_path: /lovelace/level01
+
+      - type: entities
+        show_header_toggle: false
+        entities:
+          # - sensor.ute_temperature
+          # - sensor.nere_temperature
+          - sensor.allrum_temperature
+          - sensor.vardagsrum_temperature
+
+        style: |
+          ha-card {
+            color: black;
+            border-radius: 5px;
+            margin:  8px -2px 8px -2px;
+            background: #FFFFFF url("/local/climate01.png") no-repeat;
+            background-size: cover;
+            background-position: center;
+          }
+
+      - type: weather-forecast
+        entity: weather.smhi_home
+
+        style: |
+          ha-card {
+            color: black;
+            border-radius: 5px;
+            margin:  8px -2px 8px -2px;
+            background: #FFFFFF;
+            }
+          }

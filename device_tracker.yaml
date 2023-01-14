@@ -1,0 +1,15 @@
+- platform: bluetooth_tracker
+  track_new_devices: true
+  interval_seconds: 30
+  consider_home: 180
+
+- platform: ping
+  scan_interval: 30
+  consider_home: 180
+  hosts:
+    dak_board_ping: 192.168.86.21
+    haqwin_pixel_ping: 192.168.86.23
+    ha_casareis_2_ping: 192.168.86.230
+    blink_hub_ping: 192.168.86.245
+    hue_casareis_i_ping: 192.168.86.248
+    

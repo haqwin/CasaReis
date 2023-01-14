@@ -1,0 +1,5 @@
+haqwin_next_alarm_start:
+    name: Nästa väckning startar
+    has_date: true
+    has_time: true
+    icon: mdi:alarm

@@ -1,0 +1,25 @@
+wakeup_lights_timer_delay_minutes:
+  name: 'Ljusväckning tid av'
+  min: 1
+  max: 90
+  step: 1
+  initial: 45
+  icon: mdi:timer-outline
+  unit_of_measurement: min
+wakeup_lights_timer_offset_minutes:
+  name: 'Ljusväckning förskjutning'
+  min: -10
+  max: 10
+  step: 1
+  initial: -2
+  icon: mdi:timer-outline
+  unit_of_measurement: min
+wakeup_lights_timer_transition_minutes:
+  name: 'Ljusväckning transition'
+  min: 0
+  max: 20
+  step: 1
+  initial: 8
+  icon: mdi:timer-outline
+  unit_of_measurement: min
+

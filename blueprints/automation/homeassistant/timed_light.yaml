@@ -1,0 +1,47 @@
+blueprint:
+  name: Light on & off time
+  description: Set the timing of a light from one place
+  domain: automation
+  input:
+    light_target:
+      name: Light
+      selector:
+        target:
+          entity:
+            domain: light
+    on_time:
+      name: Light on
+      description: What time should the light turn on 
+      default: '06:00:00'
+      selector:
+        time:
+    off_time:
+      name: Light off
+      description: What time should the light turn off
+      default: '18:00:00'
+      selector:
+        time:
+
+mode: single
+
+trigger:
+- platform: time
+  at: !input on_time
+- platform: time
+  at: !input off_time
+
+variables:
+  timeOn: !input on_time
+  timeOff: !input off_time
+
+# Turn on or off the light depending on time
+action:
+  - service_template: >
+      {% set curTime = (now()+timedelta(seconds=1)).strftime('%H:%M:%S') %}
+      {% if timeOn <= curTime < timeOff %}
+        light.turn_on
+      {% else %}
+        light.turn_off
+      {% endif %}
+    target: !input light_target
+

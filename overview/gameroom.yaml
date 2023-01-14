@@ -1,0 +1,270 @@
+id: sp02
+title: Allrum
+icon: mdi:gamepad-variant-outline
+background: '#3C3C3C'
+path: familyroom
+visible: false
+badges: []
+cards:
+
+  - type: custom:mod-card
+    style: |
+      ha-card {
+        padding: 8px 12px 38px 12px;
+      }
+    card:
+
+
+      type: vertical-stack
+      cards:
+
+      - type: custom:button-card
+        template: title_navigate
+        name: Allrummet
+        icon: 'mdi:chevron-double-left'
+        tap_action: 
+          action: navigate
+          navigation_path: /lovelace/level01
+
+      - type: entities
+        show_header_toggle: false
+        entities:
+          - binary_sensor.allrum_motion
+          - sensor.allrum_light_level
+          - sensor.allrum_temperature
+        style: |
+          ha-card {
+            color: black;
+            border-radius: 5px;
+            margin:  8px -2px 8px -2px;
+            background: #FFFFFF url("/local/gameroom02.png") no-repeat;
+            background-size: cover;
+            background-position: center;
+          }
+
+      - type: horizontal-stack
+        cards:
+
+        - type: custom:button-card
+          template: scene
+          name: Se TV
+          label: Dämpat
+          icon: mdi:television-classic
+          entity: script.gameroom_tv
+
+        - type: custom:button-card
+          template: scene
+          name: Spela
+          label: Medium
+          icon: mdi:checkerboard
+          entity: script.gameroom_game
+            
+        - type: custom:button-card
+          template: scene
+          name: Läsa
+          label: Ljust
+          icon: mdi:book-open-page-variant
+          entity: script.gameroom_create        
+
+        - type: custom:button-card
+          template: empty
+          
+        - type: custom:button-card
+          template: empty
+
+      - type: custom:mod-card
+        style: |
+          ha-card {
+            border-radius: 5px;
+            background: #25251C;
+            margin:  24px 0px 0px 0px;
+            padding: 16px;
+            border: solid 1px rgba(0,0,0,0.01);
+            box-shadow:0px 1px rgba(0,0,0,0.3); 
+          }
+        card:
+
+          type: vertical-stack
+          cards:
+          
+          - type: 'custom:mini-media-player'
+            entity: media_player.tv_spelhornan
+            icon: 'mdi:television-classic'
+            artwork: cover
+            group: true
+
+      - type: entities
+        show_header_toggle: false
+        entities:
+
+          - entity: light.spelhorna
+            name: Spelhörnan
+
+          - type: 'custom:slider-entity-row'
+            entity: light.spelhorna
+            full_row: true
+            hide_state: true
+
+        style: |
+          ha-card {
+            background: #EFEFEF;
+            color: black;
+            border-radius: 5px;
+            margin:  24px -2px 8px -2px;
+          }
+
+      - type: horizontal-stack
+        cards:
+
+          - type: custom:button-card
+            template: toggle
+            entity: light.spelhorna_vanster
+            name: Vänster
+            icon: mdi:lamp
+            hold_action:
+              action: more-info
+
+          - type: custom:button-card
+            template: toggle
+            entity: light.spelhorna_hoger
+            name: Höger
+            icon: mdi:lamp
+            hold_action:
+              action: more-info    
+
+          - type: custom:button-card
+            template: empty
+
+          - type: custom:button-card
+            template: empty
+
+          - type: custom:button-card
+            template: empty
+
+          - type: custom:button-card
+            template: empty
+
+
+      - type: entities
+        show_header_toggle: false
+        entities:
+
+          - entity: light.skrivbord
+            name: Skrivhörnan
+
+          - type: 'custom:slider-entity-row'
+            entity: light.skrivbord
+            full_row: true
+            hide_state: true
+
+        style: |
+          ha-card {
+            background: #EFEFEF;
+            color: black;
+            border-radius: 5px;
+            margin:  24px -2px 8px -2px;
+          }
+
+      - type: horizontal-stack
+        cards:
+
+          - type: custom:button-card
+            template: toggle
+            entity: light.skrivbord_fonster
+            name: Fönster
+            icon: mdi:lamp
+            hold_action:
+              action: more-info   
+
+          - type: custom:button-card
+            template: toggle
+            entity: light.skrivbord_hogfonster
+            name: Högfönster
+            icon: mdi:floor-lamp
+            hold_action:
+              action: more-info                                             
+
+          - type: custom:button-card
+            template: empty
+
+          - type: custom:button-card
+            template: empty
+
+          - type: custom:button-card
+            template: empty
+
+          - type: custom:button-card
+            template: empty
+
+
+      - type: entities
+        show_header_toggle: false
+        entities:
+
+          - entity: light.trappa
+            name: I trappan
+
+          - type: 'custom:slider-entity-row'
+            entity: light.trappa
+            full_row: true
+            hide_state: true
+
+        style: |
+          ha-card {
+            background: #EFEFEF;
+            color: black;
+            border-radius: 5px;
+            margin:  24px -2px 8px -2px;
+          }
+
+      - type: horizontal-stack
+        cards:
+
+          - type: custom:button-card
+            template: toggle
+            entity: light.trappa_1
+            name: Tavla
+            icon: mdi:coach-lamp
+            hold_action:
+              action: more-info  
+
+          - type: custom:button-card
+            template: toggle
+            entity: light.trappa_2
+            name: Vägg
+            icon: mdi:coach-lamp
+            hold_action:
+              action: more-info  
+
+          - type: custom:button-card
+            template: empty
+
+          - type: custom:button-card
+            template: empty
+
+          - type: custom:button-card
+            template: empty
+
+          - type: custom:button-card
+            template: empty
+
+
+      - type: entities
+        show_header_toggle: false
+        entities:
+
+          - entity: light.badrum
+            name: Utanför badrummet
+
+          - type: 'custom:slider-entity-row'
+            entity: light.badrum
+            full_row: true
+            hide_state: true
+
+        style: |
+          ha-card {
+            background: #EFEFEF;
+            color: black;
+            border-radius: 5px;
+            margin:  24px -2px 8px -2px;
+          }

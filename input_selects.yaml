@@ -1,0 +1,37 @@
+# ========== Precense ==========
+
+hakan_status_dropdown:
+  name: Håkan
+  options:
+    - home
+    - arrived
+    - left
+    - away
+  initial: home
+
+annika_status_dropdown:
+  name: Annika
+  options:
+    - home
+    - arrived
+    - left
+    - away
+  initial: home
+
+mika_status_dropdown:
+  name: Mika
+  options:
+    - home
+    - arrived
+    - left
+    - away
+  initial: home
+
+isan_status_dropdown:
+  name: Isan
+  options:
+    - home
+    - arrived
+    - left
+    - away
+  initial: home

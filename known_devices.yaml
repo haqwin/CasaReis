@@ -1,0 +1,370 @@
+ha_casareis_2_ping:
+  icon:
+  mac:
+  name: casareis_2
+  picture:
+  track: true
+
+haqwin_macbook_pro_bt:
+  icon:
+  mac: BT_8C:85:90:1F:F5:45
+  name: Håkan’s MacBook Pro
+  picture:
+  track: true
+
+annikas_imac_bt:
+  icon:
+  mac: BT_04:0C:CE:E6:6D:98
+  name: Annikas iMac
+  picture:
+  track: true
+
+blink_hub_ping:
+  icon:
+  mac:
+  name: blink_hub
+  picture:
+  track: true
+
+hue_casareis_i_ping:
+  icon:
+  mac:
+  name: hue_casareis_i
+  picture:
+  track: true
+
+dak_board_ping:
+  icon:
+  mac:
+  name: dak_board
+  picture:
+  track: true
+
+mika_iphone_bt:
+  icon:
+  mac: BT_D4:A3:3D:08:A5:CC
+  name: Mikas iPhone BT
+  picture:
+  track: true
+
+doro530x_bt:
+  icon:
+  mac: BT_00:1D:29:E4:91:CE
+  name: DORO530X
+  picture:
+  track: false
+
+isan_iphone_bt:
+  icon:
+  mac: BT_E8:FB:E9:C5:EB:1F
+  name: Isans iPhone BT
+  picture:
+  track: true
+
+surface_phone:
+  icon:
+  mac: BT_54:33:CB:42:72:D9
+  name: Surface Phone
+  picture:
+  track: true
+
+jabra_speak_510_usb:
+  icon:
+  mac: BT_50:1A:A5:DA:CA:A6
+  name: Jabra SPEAK 510 USB
+  picture:
+  track: false
+
+haqlen:
+  icon:
+  mac: BT_7C:7A:91:2E:55:1C
+  name: HAQLEN
+  picture:
+  track: false
+
+surfacebook:
+  icon:
+  mac: BT_C4:9D:ED:9E:A9:2A
+  name: SURFACEBOOK
+  picture:
+  track: false
+
+edithen:
+  icon:
+  mac: BT_40:5B:D8:16:83:5C
+  name: EDITHEN
+  picture:
+  track: false
+
+apple_wireless_trackpad:
+  icon:
+  mac: BT_70:CD:60:F8:6F:B5
+  name: Apple Wireless Trackpad
+  picture:
+  track: false
+
+apple_wireless_keyboard:
+  icon:
+  mac: BT_10:9A:DD:99:99:F1
+  name: Apple Wireless Keyboard
+  picture:
+  track: false
+
+joby_shutter:
+  icon:
+  mac: BT_0C:FC:83:69:8D:11
+  name: JOBY Shutter
+  picture:
+  track: false
+
+hakan_imac:
+  icon:
+  mac: BT_88:63:DF:A3:2B:AC
+  name: Håkan iMac
+  picture:
+  track: false
+
+tjingeling:
+  icon:
+  mac: BT_08:E6:89:B5:8A:C1
+  name: Annika iPad
+  picture:
+  track: false
+
+redmi:
+  icon:
+  mac: BT_A8:9C:ED:62:2A:6C
+  name: Redmi
+  picture:
+  track: false
+
+desktop_dr5rfl6:
+  name: DESKTOP-DR5RFL6
+  mac: BT_B8:9A:2A:17:64:10
+  icon:
+  picture:
+  track: true
+
+bt_7c_2e_bd_7f_71_9b:
+  name: bt_7c_2e_bd_7f_71_9b
+  mac: BT_7C:2E:BD:7F:71:9B
+  icon:
+  picture:
+  track: true
+
+setup64010:
+  name: setup64010
+  mac: BT_7C:2E:BD:7F:63:FC
+  icon:
+  picture:
+  track: true
+
+setup718a0:
+  name: setup718A0
+  mac: BT_7C:2E:BD:7F:71:85
+  icon:
+  picture:
+  track: true
+
+musik_matplatsen:
+  name: Musik Matplatsen
+  mac: BT_E4:F0:42:0A:41:58
+  icon:
+  picture:
+  track: true
+
+urbanears_luma:
+  name: Urbanears Luma
+  mac: BT_14:43:19:69:75:FF
+  icon:
+  picture:
+  track: true
+
+sofias_macbook_air:
+  name: Sofias MacBook Air
+  mac: BT_14:C2:13:15:4B:45
+  icon:
+  picture:
+  track: true
+
+urbanears_luma_2:
+  name: Urbanears Luma
+  mac: BT_14:43:19:6E:F8:9F
+  icon:
+  picture:
+  track: true
+
+galaxy_s7:
+  name: Galaxy S7
+  mac: BT_44:78:3E:6C:F7:13
+  icon:
+  picture:
+  track: true
+
+urbanears_luma_3:
+  name: Urbanears Luma
+  mac: BT_14:43:19:69:86:C4
+  icon:
+  picture:
+  track: true
+
+hakans_macbook_pro:
+  name: Håkan’s MacBook Pro
+  mac: BT_3C:22:FB:44:FD:BA
+  icon:
+  picture:
+  track: true
+
+pins_ie:
+  name: Pins IE
+  mac: BT_48:46:C1:0B:11:7C
+  icon:
+  picture:
+  track: true
+
+apple_magic_mouse:
+  name: Apple Magic Mouse
+  mac: BT_04:0C:CE:2D:33:6F
+  icon:
+  picture:
+  track: true
+
+sbl_3_d1:
+  name: SBL 3 D1
+  mac: BT_CC:C5:FE:37:53:98
+  icon:
+  picture:
+  track: true
+
+urbanears_luma_4:
+  name: Urbanears Luma
+  mac: BT_14:43:19:6E:E1:38
+  icon:
+  picture:
+  track: true
+
+urbanears_alby:
+  name: Urbanears Alby
+  mac: BT_28:FE:65:75:ED:AA
+  icon:
+  picture:
+  track: true
+
+ns_bt300f:
+  name: NS-BT300F
+  mac: BT_00:1A:D5:F0:3C:0D
+  icon:
+  picture:
+  track: true
+
+urbanears_luma_5:
+  name: Urbanears Luma
+  mac: BT_14:43:19:75:DD:F3
+  icon:
+  picture:
+  track: true
+
+annika_reis_riksbyggen_se:
+  name: Annika.Reis@riksbyggen.se
+  mac: BT_44:C6:5D:E8:FB:62
+  icon:
+  picture:
+  track: true
+
+jabra_elite_active_75t:
+  name: Jabra Elite Active 75t
+  mac: BT_70:BF:92:F7:D2:D0
+  icon:
+  picture:
+  track: true
+
+iissemal_nb0207:
+  name: IISSEMAL-NB0207
+  mac: BT_EC:63:D7:89:1A:5B
+  icon:
+  picture:
+  track: true
+
+haqwin_iphone:
+  name: Haqwin iPhone
+  mac: BT_C4:14:11:C7:BB:D6
+  icon:
+  picture:
+  track: true
+
+desktop_7174303:
+  name: DESKTOP-7174303
+  mac: BT_74:D8:3E:42:57:60
+  icon:
+  picture:
+  track: true
+
+street_x7_wl:
+  name: STREET X7 WL
+  mac: BT_FC:58:FA:DF:5D:F0
+  icon:
+  picture:
+  track: true
+
+isan_airpods:
+  name: Isan - AirPods
+  mac: BT_C8:B1:CD:EF:5D:65
+  icon:
+  picture:
+  track: true
+
+poooli_l1:
+  name: Poooli_L1
+  mac: BT_FC:58:FA:22:2D:8C
+  icon:
+  picture:
+  track: true
+
+microsoft_wedge_mobile_keyboard:
+  name: Microsoft Wedge Mobile Keyboard
+  mac: BT_7C:1E:52:0F:DA:59
+  icon:
+  picture:
+  track: true
+
+flyingtiger968:
+  name: Flyingtiger968
+  mac: BT_1A:09:5A:D1:E7:41
+  icon:
+  picture:
+  track: true
+
+haqwin_p6:
+  name: Haqwin P6
+  mac: BT_DC:E5:5B:36:93:77
+  icon:
+  picture:
+  track: true
+
+haqwin_pixel_ping:
+  name: haqwin_pixel_ping
+  mac:
+  icon:
+  picture:
+  track: true
+
+tv_samsung_qn85aa_55_tv:
+  name: '[TV] Samsung QN85AA 55 TV'
+  mac: BT_54:3A:D6:6F:D2:37
+  icon:
+  picture:
+  track: true
+
+tv_vardagsrummet:
+  name: TV Vardagsrummet
+  mac: BT_DC:E5:5B:7E:42:2F
+  icon:
+  picture:
+  track: true
+
+soundpeats_t2:
+  name: SOUNDPEATS T2
+  mac: BT_6C:0D:E1:C6:C0:EA
+  icon:
+  picture:
+  track: true

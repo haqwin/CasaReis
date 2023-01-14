@@ -1,0 +1,119 @@
+id: is01
+title: Isan
+icon: mdi:music-clef-bass
+background: '#3C3C3C'
+path: isan
+visible: false
+badges: []
+cards:
+
+  - type: custom:mod-card
+    style: |
+      ha-card {
+        padding: 8px 12px 38px 12px;
+      }
+    card:
+
+      type: vertical-stack
+      cards:
+
+      - type: custom:button-card
+        template: title_navigate
+        name: Isabella
+        icon: 'mdi:chevron-double-left'
+        styles:
+          card:
+            - padding-bottom: 8px
+        tap_action: 
+          action: navigate
+          navigation_path: /lovelace/level01
+
+      - type: horizontal-stack
+        cards:
+
+        - type: custom:button-card
+          template: scene
+          name: Sova
+          label: Svagt
+          icon: mdi:chat-sleep
+          entity: script.isan_ceiling_low   
+
+        - type: custom:button-card
+          template: scene
+          name: Plugga
+          label: Medium
+          icon: mdi:laptop-windows
+          entity: script.isan_ceiling_medium 
+
+        - type: custom:button-card
+          template: scene
+          name: Läsa
+          label: Ljust
+          icon: mdi:book-open-page-variant
+          entity: script.isan_ceiling_bright  
+
+        - type: custom:button-card
+          template: empty
+
+        - type: custom:button-card
+          template: empty
+
+
+      - type: entities
+        show_header_toggle: false
+        entities:
+
+          - entity: light.isan_tak
+            name: Taket
+
+          - type: 'custom:slider-entity-row'
+            entity: light.isan_tak
+            full_row: true
+            hide_state: true
+
+        style: |
+          ha-card {
+            background: #EFEFEF;
+            color: black;
+            border-radius: 5px;
+            margin:  24px -2px 8px -2px;
+          }
+
+      - type: horizontal-stack
+        cards:
+
+          - type: custom:button-card
+            template: toggle
+            entity: light.isan_tak_1
+            name: Tak 1
+            icon: mdi:ceiling-light
+            hold_action:
+              action: more-info    
+
+          - type: custom:button-card
+            template: toggle
+            entity: light.isan_tak_2
+            name: Tak 2
+            icon: mdi:ceiling-light
+            hold_action:
+              action: more-info    
+
+          - type: custom:button-card
+            template: toggle
+            entity: light.isan_tak_3
+            name: Tak 3
+            icon: mdi:ceiling-light
+            hold_action:
+              action: more-info    
+
+          - type: custom:button-card
+            template: empty
+
+          - type: custom:button-card
+            template: empty
+
+          - type: custom:button-card
+            template: empty
+
+
+

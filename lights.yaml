@@ -1,0 +1,46 @@
+- platform: group
+  name: soffa
+  entities:
+    - light.soffa_vanster
+    - light.soffa_mitten
+    - light.soffa_hoger
+
+- platform: group
+  name: mika_tak
+  entities:
+    - light.mika_tak_1
+    - light.mika_tak_2
+    - light.mika_tak_3
+
+- platform: group
+  name: isan_tak
+  entities:
+    - light.isan_tak_1
+    - light.isan_tak_2
+    - light.isan_tak_3
+
+- platform: group
+  name: skrivbord
+  entities:
+    - light.skrivbord_fonster
+    - light.skrivbord_mitten
+    - light.skrivbord_hogfonster
+
+- platform: group
+  name: spelhorna
+  entities:
+    - light.spelhorna_vanster
+    - light.spelhorna_hoger
+
+- platform: group
+  name: huset
+  entities:
+    - light.kokstak
+    - light.matplats
+    - light.hall
+    - light.vardagsum
+    - light.arbetsrum
+    - light.allrum
+    - light.sovrum
+    - light.isan
+    - light.mika
